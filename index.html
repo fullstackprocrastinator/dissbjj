@@ -43,33 +43,99 @@
         </section>
 
         <section id="video" class="section">
-            <div class="container">
-              <h2>Latest Video from Grappling Community</h2>
-              <iframe id="latest-video" width="600" height="340" frameborder="0" allowfullscreen style="display: block;"></iframe>
-          
-              <script>
-                const channelID = "UC4eX8vGclH3o1aW1wTFvZA"; // @grapplingcommunity2606
-                const reqURL = `https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?channel_id=${channelID}`;
-          
-                fetch(reqURL)
-                  .then(response => response.json())
-                  .then(data => {
-                    console.log("API Response:", data);
-                    if (data.items && data.items.length > 0) {
-                      const latestVideo = data.items[0];
-                      const videoID = latestVideo.link.split("v=")[1].split("&")[0];
-                      console.log("Video ID:", videoID);
-                      const iframe = document.getElementById("latest-video");
-                      iframe.src = `https://www.youtube.com/embed/${videoID}?controls=1&autoplay=0`;
-                      console.log("Iframe src set to:", iframe.src);
-                    } else {
-                      console.error("No videos found in the channel.");
-                    }
-                  })
-                  .catch(error => console.error("Error fetching video:", error));
-              </script>
+        <div class="container">
+            <h2>Latest Video from Grappling Community</h2>
+            <div id="video-container">
+                <!-- Loading spinner will appear here temporarily -->
+                <div id="video-placeholder" style="display: flex; justify-content: center; align-items: center; height: 340px; background: #1e1e1e;">
+                    <div class="spinner"></div>
+                </div>
             </div>
-          </section>
+        </div>
+    </section>
+        <script>
+        // YouTube API solution
+        const loadLatestVideo = async () => {
+            const container = document.getElementById('video-container');
+            const placeholder = document.getElementById('video-placeholder');
+            
+            try {
+                // First try with playlist method
+                const playlistResponse = await fetch(
+                    `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UU4eX8vGclH3o1aW1wTFvZA&maxResults=1&key=AIzaSyD5eW9qRzq1mJ4s6Xq7W7ZvJ8d9Q0wT7bE`
+                );
+                
+                const playlistData = await playlistResponse.json();
+                
+                if (playlistData.items && playlistData.items.length > 0) {
+                    const videoId = playlistData.items[0].snippet.resourceId.videoId;
+                    showVideo(videoId);
+                    return;
+                }
+                
+                // Fallback to channel method if playlist fails
+                const channelResponse = await fetch(
+                    `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UC4eX8vGclH3o1aW1wTFvZA&maxResults=1&order=date&type=video&key=AIzaSyD5eW9qRzq1mJ4s6Xq7W7ZvJ8d9Q0wT7bE`
+                );
+                
+                const channelData = await channelResponse.json();
+                
+                if (channelData.items && channelData.items.length > 0) {
+                    const videoId = channelData.items[0].id.videoId;
+                    showVideo(videoId);
+                } else {
+                    showError();
+                }
+            } catch (error) {
+                console.error("Error fetching video:", error);
+                showError();
+            }
+        };
+
+        const showVideo = (videoId) => {
+            const container = document.getElementById('video-container');
+            const placeholder = document.getElementById('video-placeholder');
+            
+            placeholder.style.display = 'none';
+            
+            const iframe = document.createElement('iframe');
+            iframe.width = '100%';
+            iframe.height = '340';
+            iframe.src = `https://www.youtube.com/embed/${videoId}`;
+            iframe.frameBorder = '0';
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+            iframe.allowFullscreen = true;
+            iframe.style.display = 'block';
+            
+            container.appendChild(iframe);
+        };
+
+        const showError = () => {
+            const container = document.getElementById('video-container');
+            const placeholder = document.getElementById('video-placeholder');
+            
+            placeholder.innerHTML = `
+                <div style="text-align: center; padding: 20px;">
+                    <p>Couldn't load latest video. Visit our 
+                        <a href="https://www.youtube.com/@grapplingcommunity2606" 
+                           target="_blank" 
+                           style="color: #ff0000; text-decoration: none;">
+                            YouTube Channel
+                        </a>
+                    </p>
+                    <iframe width="100%" height="340" 
+                            src="https://www.youtube.com/embed/8S9dTAc7mDk" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            `;
+        };
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', loadLatestVideo);
+    </script>
 
         <section id="classes" class="section">
             <div class="container">
