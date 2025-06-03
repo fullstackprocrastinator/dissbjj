@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DISS BJJ - Brazilian Jiu-Jitsu Club | Diss, Norfolk, UK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e30613;
+            --dark: #121212;
+            --light: #f8f8f8;
+            --gray: #2a2a2a;
+            --accent: #0066cc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 2px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light);
+        }
+        
+        .logo-text span {
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('instructor.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 80px;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        
+        .hero h1 span {
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+            margin: 5px;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(227, 6, 19, 0.4);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--light);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--light);
+            color: var(--dark);
+            box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+        }
+        
+        /* About Section */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .about-image img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Classes Section */
+        .classes {
+            background-color: var(--gray);
+        }
+        
+        .classes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .class-card {
+            background-color: var(--dark);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .class-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .class-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .class-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .class-card:hover .class-image img {
+            transform: scale(1.1);
+        }
+        
+        .class-content {
+            padding: 25px;
+        }
+        
+        .class-content h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .class-content ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .class-content ul li {
+            margin-bottom: 8px;
+        }
+        
+        /* Schedule Section */
+        .schedule {
+            text-align: center;
+        }
+        
+        .schedule-container {
+            background-color: var(--gray);
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .schedule-table th, 
+        .schedule-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .schedule-table th {
+            background-color: rgba(227, 6, 19, 0.2);
+            font-weight: 600;
+        }
+        
+        .schedule-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .schedule-table tr:hover {
+            background-color: rgba(255,255,255,0.05);
+        }
+        
+        /* YouTube Section */
+        .youtube {
+            background-color: var(--gray);
+        }
+        
+        .youtube-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .video-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .video-card iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+        }
+        
+        .video-info {
+            padding: 15px;
+            background-color: var(--dark);
+        }
+        
+        .video-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .youtube-link {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-details {
+            margin: 25px 0;
+        }
+        
+        .contact-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .contact-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .contact-text h4 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        
+        .map {
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            padding: 60px 0 20px;
+            border-top: 2px solid var(--primary);
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo span {
+            color: var(--primary);
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--gray);
+            border-radius: 50%;
+            color: var(--light);
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .footer-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                padding: 70px 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text">DISS <span>BJJ</span></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#classes">Classes</a></li>
+                    <li><a href="#schedule">Schedule</a></li>
+                    <li><a href="#youtube">Videos</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Brazilian Jiu-Jitsu in <span>Diss, Norfolk</span></h1>
+            <p>Learn self-defense, improve fitness, and become part of our growing #grapplingcommunity.</p>
+            <div class="hero-btns">
+                <a href="#classes" class="btn">View Classes</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>About DISS BJJ</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Welcome to Diss BJJ</h3>
+                    <p>Diss BJJ is a Brazilian Jiu-Jitsu & grappling community based in the heart of Diss, Norfolk. We provide high-quality instruction for all levels - from complete beginners to experienced competitors.</p>
+                    <p>Our academy is led by certified black belt instructors with decades of combined experience. We focus on technique, discipline, and creating a welcoming environment for everyone.</p>
+                    <p>Whether you're looking to learn self-defense, get in shape, or compete at the highest levels, Diss BJJ has a program for you. Our community is built on respect, discipline, and continuous improvement.</p>
+                    <a href="#contact" class="btn">Visit Us Today</a>
+                </div>
+                <div class="about-image">
+                    <img src="logo.jpg" alt="BJJ Training at DISS BJJ">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes Section -->
+    <section id="classes" class="section classes">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Classes</h2>
+            </div>
+            <div class="classes-container">
+                <div class="class-card">
+                    <div class="class-image">
+                        <img src="nogi.jpg" alt="No-GI">
+                    </div>
+                    <div class="class-content">
+                        <h3>No-GI</h3>
+                        <p>For experienced practitioners looking to take their game to the next level with complex techniques and strategies.</p>
+                        <ul>
+                            <li>Advanced position transitions</li>
+                            <li>Competition strategies</li>
+                            <li>High-level submissions</li>
+                            <li>Intensive rolling sessions</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="class-card">
+                    <div class="class-image">
+                        <img src="gi.jpg" alt="GI">
+                    </div>
+                    <div class="class-content">
+                        <h3>GI</h3>
+                        <p>Specialized classes for children aged 5-15 focusing on discipline, respect, and fun while learning BJJ.</p>
+                        <ul>
+                            <li>Age-appropriate techniques</li>
+                            <li>Bully-proofing strategies</li>
+                            <li>Coordination and fitness</li>
+                            <li>Character development</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="section schedule">
+        <div class="container">
+            <div class="section-title">
+                <h2>Class Schedule</h2>
+            </div>
+            <div class="schedule-container">
+                <p>All classes are held at our academy in Diss, Norfolk. New students are always welcome!</p>
+                
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Class</th>
+                            <th>Time</th>
+                            <th>Instructor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Friday</td>
+                            <td>No-GI</td>
+                            <td>19:20</td>
+                            <td>Alec Gayson</td>
+                        </tr>
+                        <tr>
+                            <td>Saturday</td>
+                            <td>GI</td>
+                            <td>09:00</td>
+                            <td>Alec Gayson</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Section -->
+    <section id="youtube" class="section youtube">
+        <div class="container">
+            <div class="section-title">
+                <h2>Instructional Videos</h2>
+            </div>
+            <p style="text-align: center; margin-bottom: 30px;">Check out our YouTube channel for technique tutorials, competition highlights, and more!</p>
+            
+            <div class="youtube-container">
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/watch?v=VsM_Gd0KkZo&t=58s" title="Guard Attacks" allowfullscreen></iframe>
+                    <div class="video-info">
+                        <h3>Guard Attacks</h3>
+                        <p>Learn this fundamental guard pass that works at all levels</p>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="BJJ Competition" allowfullscreen></iframe>
+                    <div class="video-info">
+                        <h3>2023 Competition Highlights</h3>
+                        <p>Our team at the recent Norfolk Open Championship</p>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/watch?v=QwYBex1yqk8" title="SLX Sweep" allowfullscreen></iframe>
+                    <div class="video-info">
+                        <h3>SLX Sweep</h3>
+                        <p>Improve your technique with these essential drills</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="youtube-link">
+                <a href="https://www.youtube.com/@grapplingcommunity2606" class="btn" target="_blank">
+                    <i class="fab fa-youtube"></i> Visit Our YouTube Channel
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Location</h4>
+                                <p>Heywood Sports & Fitness, <br> Walcot Road, <br> Diss, <br> Norfolk, <br> IP22 4DB</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p>+44 1234 567890</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>info@dissbjj.co.uk</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2435.441657651907!2d1.1145651760914272!3d52.38054347202496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d9c0f2691c3dbd%3A0x753ef974239f9ed1!2sHeywood%20Sports%20%26%20Fitness!5e0!3m2!1sen!2suk!4v1748903346443!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="" disabled selected>Interested In...</option>
+                                <option value="no-gi">No-GI</option>
+                                <option value="gi">GI</option>
+                                <option value="general">General Enquiry</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">DISS <span>BJJ</span></div>
+                    <p>Premier Brazilian Jiu-Jitsu community in Diss, Norfolk. Suitable for all skill levels.</p>
+                    <div class="social-icons">
+                        <a href="https://www.youtube.com/@grapplingcommunity2606" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/groups/711745335626798/user/100083371476051" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/diss.bjj/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#classes">Classes</a></li>
+                        <li><a href="#schedule">Schedule</a></li>
+                        <li><a href="#youtube">Videos</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4 class="footer-title">Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i>Heywood Sports & Fitness, Walcot Road, Diss, Norfolk, IP22 4DB</li>
+                        <li><i class="fas fa-phone"></i> +44 1234 567890</li>
+                        <li><i class="fas fa-envelope"></i> info@dissbjj.co.uk</li>
+                        <li><i class="fas fa-clock"></i> Fri: 19:20, Sat: 0900</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 DISS BJJ - Grappling Community. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('nav ul');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navMenu.style.display = 'none';
+                }
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '10px 0';
+                header.style.backgroundColor = 'rgba(18, 18, 18, 0.98)';
+            } else {
+                header.style.padding = '15px 0';
+                header.style.backgroundColor = 'rgba(18, 18, 18, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
