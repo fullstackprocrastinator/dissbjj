@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DISS BJJ - Brazilian Jiu-Jitsu Club | Diss, Norfolk, UK</title>
+    <title>DISS BJJ | Brazilian Jiu-Jitsu | Diss, Norfolk</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #e30613;
-            --dark: #121212;
-            --light: #f8f8f8;
-            --gray: #2a2a2a;
-            --accent: #0066cc;
+            --black: #000000;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #333333;
         }
         
         * {
@@ -24,36 +22,42 @@
         }
         
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--dark);
-            color: var(--light);
+            font-family: 'Open Sans', sans-serif;
             line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
             overflow-x: hidden;
         }
         
-        h1, h2, h3, h4 {
-            font-family: 'Oswald', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--black);
             margin-bottom: 1rem;
+            letter-spacing: -0.5px;
         }
         
         .container {
-            width: 100%;
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
         }
         
         /* Header Styles */
         header {
-            background-color: rgba(18, 18, 18, 0.95);
+            background-color: transparent;
+            padding: 1.5rem 0;
             position: fixed;
             width: 100%;
             z-index: 1000;
-            padding: 15px 0;
-            border-bottom: 2px solid var(--primary);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: all 0.4s ease;
+        }
+        
+        header.scrolled {
+            background-color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--medium-gray);
         }
         
         .header-container {
@@ -67,20 +71,19 @@
             align-items: center;
         }
         
-        .logo img {
-            height: 50px;
-            margin-right: 15px;
-        }
-        
-        .logo-text {
-            font-family: 'Oswald', sans-serif;
+        .logo h1 {
             font-size: 1.8rem;
+            margin-bottom: 0;
             font-weight: 700;
-            color: var(--light);
+            color: var(--white);
         }
         
-        .logo-text span {
-            color: var(--primary);
+        header.scrolled .logo h1 {
+            color: var(--black);
+        }
+        
+        .logo span {
+            font-weight: 300;
         }
         
         nav ul {
@@ -89,365 +92,290 @@
         }
         
         nav ul li {
-            margin-left: 25px;
+            margin-left: 2rem;
         }
         
         nav ul li a {
-            color: var(--light);
+            color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
+            transition: all 0.3s;
             position: relative;
+            font-size: 1rem;
         }
         
-        nav ul li a:hover {
-            color: var(--primary);
+        header.scrolled nav ul li a {
+            color: var(--black);
         }
         
-        nav ul li a::after {
+        nav ul li a:after {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
             width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
+            height: 1px;
+            background: var(--white);
+            transition: width 0.3s;
         }
         
-        nav ul li a:hover::after {
+        header.scrolled nav ul li a:after {
+            background: var(--black);
+        }
+        
+        nav ul li a:hover:after {
             width: 100%;
         }
         
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--light);
-            font-size: 1.8rem;
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
+        /* Hero Section with Image and Overlay */
         .hero {
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.4), 
+                rgba(0, 0, 0, 0.4)), 
+                url('instructor.jpg') no-repeat center center/cover;
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('instructor.jpg');
-            background-size: cover;
-            background-position: center;
             display: flex;
             align-items: center;
+            text-align: center;
             position: relative;
         }
         
         .hero-content {
-            text-align: center;
             max-width: 800px;
             margin: 0 auto;
-            padding-top: 80px;
+            padding: 0 20px;
+            z-index: 2;
+            width: 100%;
         }
         
-        .hero h1 {
-            font-size: 4rem;
+        .hero h2 {
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
             line-height: 1.2;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
-        
-        .hero h1 span {
-            color: var(--primary);
+            color: var(--white);
+            animation: fadeInUp 1s ease;
         }
         
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 2rem;
-            max-width: 700px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            color: var(--light-gray);
+            animation: fadeInUp 1.2s ease;
         }
         
         .btn {
             display: inline-block;
-            background-color: var(--primary);
-            color: var(--light);
+            background: transparent;
+            color: var(--white);
             padding: 12px 30px;
-            border-radius: 4px;
+            border-radius: 0;
             text-decoration: none;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            border: 2px solid var(--primary);
+            transition: all 0.3s;
+            border: 1px solid var(--white);
             margin: 5px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            animation: fadeInUp 1.4s ease;
         }
         
         .btn:hover {
-            background-color: transparent;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(227, 6, 19, 0.4);
+            background: var(--white);
+            color: var(--black);
         }
         
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--light);
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--light);
-            color: var(--dark);
-            box-shadow: 0 5px 15px rgba(255,255,255,0.2);
-        }
-        
-        /* About Section */
-        .section {
-            padding: 100px 0;
+        /* Sections */
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--medium-gray);
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
-            position: relative;
+            margin-bottom: 3rem;
         }
         
         .section-title h2 {
             font-size: 2.5rem;
+            position: relative;
             display: inline-block;
         }
         
-        .section-title h2::after {
+        .section-title h2:after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
-            height: 4px;
-            background-color: var(--primary);
+            height: 2px;
+            background: var(--black);
         }
         
+        /* About Section */
         .about-content {
             display: flex;
             align-items: center;
-            gap: 50px;
+            gap: 4rem;
         }
         
         .about-text {
             flex: 1;
         }
         
-        .about-text h3 {
-            font-size: 2rem;
+        .about-text p {
             margin-bottom: 1.5rem;
+            line-height: 1.8;
         }
         
         .about-image {
             flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         
         .about-image img {
             width: 100%;
+            height: auto;
             display: block;
-            transition: transform 0.5s ease;
-        }
-        
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
-        
-        /* Classes Section */
-        .classes {
-            background-color: var(--gray);
-        }
-        
-        .classes-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .class-card {
-            background-color: var(--dark);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
-        }
-        
-        .class-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .class-image {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .class-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .class-card:hover .class-image img {
-            transform: scale(1.1);
-        }
-        
-        .class-content {
-            padding: 25px;
-        }
-        
-        .class-content h3 {
-            color: var(--primary);
-            font-size: 1.5rem;
-        }
-        
-        .class-content ul {
-            margin: 15px 0;
-            padding-left: 20px;
-        }
-        
-        .class-content ul li {
-            margin-bottom: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
         
         /* Schedule Section */
         .schedule {
-            text-align: center;
-        }
-        
-        .schedule-container {
-            background-color: var(--gray);
-            border-radius: 10px;
-            padding: 30px;
-            max-width: 800px;
-            margin: 0 auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background-color: var(--light-gray);
+            border-bottom: 1px solid var(--medium-gray);
         }
         
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
-        }
-        
-        .schedule-table th, 
-        .schedule-table td {
-            padding: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin: 0 auto;
+            max-width: 700px;
+            background: var(--white);
         }
         
         .schedule-table th {
-            background-color: rgba(227, 6, 19, 0.2);
-            font-weight: 600;
+            background-color: var(--black);
+            color: var(--white);
+            padding: 15px;
+            text-align: left;
+            font-weight: 500;
+            border-bottom: 1px solid var(--black);
+        }
+        
+        .schedule-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--medium-gray);
         }
         
         .schedule-table tr:last-child td {
             border-bottom: none;
         }
         
-        .schedule-table tr:hover {
-            background-color: rgba(255,255,255,0.05);
-        }
-        
         /* YouTube Section */
-        .youtube {
-            background-color: var(--gray);
+        .youtube-section {
+            background-color: var(--white);
         }
         
-        .youtube-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .video-card {
-            border-radius: 10px;
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
         }
         
-        .video-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .video-card iframe {
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 200px;
+            height: 100%;
             border: none;
         }
         
         .video-info {
-            padding: 15px;
-            background-color: var(--dark);
+            text-align: center;
+            margin-top: 2rem;
         }
         
         .video-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            margin-bottom: 1rem;
         }
         
-        .youtube-link {
-            text-align: center;
-            margin-top: 40px;
+        .video-info a {
+            color: var(--dark-gray);
+            text-decoration: none;
+            border-bottom: 1px solid var(--dark-gray);
+            transition: all 0.3s;
+        }
+        
+        .video-info a:hover {
+            color: var(--black);
+            border-bottom: 1px solid var(--black);
         }
         
         /* Contact Section */
         .contact-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            padding: 2rem;
+            border: 1px solid var(--medium-gray);
         }
         
         .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-        
-        .contact-details {
-            margin: 25px 0;
+            margin-bottom: 1.5rem;
+            text-align: center;
         }
         
         .contact-item {
             display: flex;
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
         }
         
         .contact-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary);
-            border-radius: 50%;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
+            margin-right: 1rem;
             flex-shrink: 0;
-        }
-        
-        .contact-text {
-            display: flex;
-            flex-direction: column;
+            border: 1px solid var(--black);
         }
         
         .contact-text h4 {
-            margin-bottom: 5px;
-            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
         }
         
-        .map {
+        .contact-text p, .contact-text a {
+            color: var(--dark-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-text a:hover {
+            color: var(--black);
+        }
+        
+        /* Map */
+        .map-container {
             height: 300px;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid var(--medium-gray);
         }
         
-        .map iframe {
+        .map-container iframe {
             width: 100%;
             height: 100%;
             border: none;
@@ -455,322 +383,252 @@
         
         /* Footer */
         footer {
-            background-color: #0a0a0a;
-            padding: 60px 0 20px;
-            border-top: 2px solid var(--primary);
+            background: var(--white);
+            color: var(--dark-gray);
+            padding: 3rem 0 2rem;
+            text-align: center;
         }
         
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-logo {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-        
-        .footer-logo span {
-            color: var(--primary);
-        }
-        
-        .footer-about p {
-            margin-bottom: 20px;
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         .social-icons {
-            display: flex;
-            gap: 15px;
+            margin: 1.5rem 0;
         }
         
         .social-icons a {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             width: 40px;
             height: 40px;
-            background-color: var(--gray);
-            border-radius: 50%;
-            color: var(--light);
-            transition: all 0.3s ease;
+            border: 1px solid var(--black);
+            border-radius: 0;
+            color: var(--black);
+            margin: 0 0.5rem;
+            transition: all 0.3s;
         }
         
         .social-icons a:hover {
-            background-color: var(--primary);
-            transform: translateY(-5px);
-        }
-        
-        .footer-title {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background-color: var(--primary);
-        }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links ul li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links ul li a {
-            color: #aaa;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-links ul li a:hover {
-            color: var(--primary);
+            background: var(--black);
+            color: var(--white);
         }
         
         .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #aaa;
+            margin-top: 1rem;
             font-size: 0.9rem;
         }
         
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .hero h1 {
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            /* Tablet adjustments */
+            .hero h2 {
                 font-size: 3rem;
+            }
+            
+            .hero-content {
+                padding-top: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
             }
             
             .about-content {
                 flex-direction: column;
             }
-        }
-        
-        @media (max-width: 768px) {
+            
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
             nav ul {
-                display: none;
+                margin-top: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
             }
             
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .section {
-                padding: 70px 0;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
+            nav ul li {
+                margin: 0.5rem 1rem;
             }
             
             .btn {
                 display: block;
                 margin: 10px auto;
-                width: 80%;
+                max-width: 250px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            /* Adjust hero for mobile */
+            .hero {
+                background-position: 65% center;
+                /* Push content down for mobile */
+                padding-top: 100px;
+                align-items: flex-start;
+            }
+            
+            .hero-content {
+                padding-top: 40px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            nav ul li {
+                margin: 0.3rem 0.8rem;
+            }
+            
+            .hero {
+                padding-top: 120px;
+            }
+            
+            .hero-content {
+                padding-top: 20px;
             }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="main-header">
         <div class="container header-container">
             <div class="logo">
-                <div class="logo-text">DISS <span>BJJ</span></div>
+                <h1>DISS <span>BJJ</span></h1>
             </div>
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#classes">Classes</a></li>
                     <li><a href="#schedule">Schedule</a></li>
                     <li><a href="#youtube">Videos</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
+    <!-- Hero Section with Image and Overlay -->
+    <section class="hero" id="home">
         <div class="container hero-content">
-            <h1>Brazilian Jiu-Jitsu in <span>Diss, Norfolk</span></h1>
+            <h2>Brazilian Jiu-Jitsu in Diss</h2>
             <p>Learn self-defense, improve fitness, and become part of our growing #grapplingcommunity.</p>
             <div class="hero-btns">
-                <a href="#classes" class="btn">View Classes</a>
+                <a href="#schedule" class="btn">View Class Schedule</a>
+                <a href="#contact" class="btn">Contact Us</a>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section">
+    <section id="about">
         <div class="container">
             <div class="section-title">
-                <h2>About DISS BJJ</h2>
+                <h2>About Our Club</h2>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Welcome to Diss BJJ</h3>
                     <p>Diss BJJ is a Brazilian Jiu-Jitsu & grappling community based in the heart of Diss, Norfolk. We provide high-quality instruction for all levels, from complete beginners to experienced competitors.</p>
-                    <br>
                     <p>Led by BJJ black belt Alec Gayson with decades of experience as a Royal Marine Physical Training, Exercise Rehabilitation & Close Combat SME. We focus on technique, discipline, and creating a welcoming environment for everyone.</p>
-                    <br>
                     <p>Whether you're looking to learn self-defense, get in shape, or compete at the highest levels, Diss BJJ has a program for you. Our community is built on respect, discipline, and continuous improvement.</p>
-                    <a href="#contact" class="btn">Visit Us Today</a>
+                    <div style="margin-top: 2rem;">
+                        <a href="#schedule" class="btn" style="color: var(--black); border-color: var(--black);">View Class Schedule</a>
+                    </div>
                 </div>
                 <div class="about-image">
-                    <img src="logo.jpg" alt="BJJ Training at DISS BJJ">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Classes Section -->
-    <section id="classes" class="section classes">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Classes</h2>
-            </div>
-            <div class="classes-container">
-                <div class="class-card">
-                    <div class="class-image">
-                        <img src="nogi.jpg" alt="No-GI">
-                    </div>
-                    <div class="class-content">
-                        <h3>No-GI</h3>
-                        <p>No-gi BJJ is a dynamic, submission-focused grappling style practiced without the traditional kimono, emphasising speed, agility, and techniques like leg locks and wrestling takedowns.</p>
-                        <ul>
-                            <li>Wrestling Fundamentals</li>
-                            <li>Dynamic Submissions</li>
-                            <li>Positional Flow & Transitions</li>
-                            <li>Intensive Rolling Sessions</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="class-card">
-                    <div class="class-image">
-                        <img src="gi.jpg" alt="GI">
-                    </div>
-                    <div class="class-content">
-                        <h3>GI</h3>
-                        <p>Gi BJJ is a grappling martial art practiced in a traditional kimono (gi), utilising grips on the fabric for control, submissions, and positional dominance.</p>
-                        <ul>
-                            <li>Grip Fighting & Gi Control</li>
-                            <li>Lapel-Based Submissions</li>
-                            <li>Positional Hierarchy</li>
-                            <li>Character Development</li>
-                        </ul>
-                    </div>
+                    <img src="dissgi.jpg" alt="BJJ Training">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Schedule Section -->
-    <section id="schedule" class="section schedule">
+    <section class="schedule" id="schedule">
         <div class="container">
             <div class="section-title">
                 <h2>Class Schedule</h2>
             </div>
-            <div class="schedule-container">
-                <p>All classes are currently held at Heywood Sports & Fitness in Diss, Norfolk. New students are always welcome!</p>
-                
-                <table class="schedule-table">
-                    <thead>
-                        <tr>
-                            <th>Day</th>
-                            <th>Class</th>
-                            <th>Time</th>
-                            <th>Instructor</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Friday</td>
-                            <td>No-GI</td>
-                            <td>19:20</td>
-                            <td>Alec Gayson</td>
-                        </tr>
-                        <tr>
-                            <td>Saturday</td>
-                            <td>GI</td>
-                            <td>09:00</td>
-                            <td>Alec Gayson</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Class</th>
+                        <th>Time</th>
+                        <th>Instructor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Friday</td>
+                        <td>No-GI</td>
+                        <td>19:20</td>
+                        <td>Alec Gayson</td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td>GI</td>
+                        <td>09:00</td>
+                        <td>Alec Gayson</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align: center; margin-top: 2rem;">
+                <p><strong>Location:</strong> Heywood Sports & Fitness, Walcot Road, Diss, Norfolk, IP22 4DB</p>
             </div>
         </div>
     </section>
 
     <!-- YouTube Section -->
-    <section id="youtube" class="section youtube">
+    <section id="youtube" class="youtube-section">
         <div class="container">
             <div class="section-title">
-                <h2>Instructional Videos</h2>
+                <h2>DISS BJJ Featured Video</h2>
             </div>
-            <p style="text-align: center; margin-bottom: 30px;">Check out our YouTube channel for technique tutorials, competition highlights, and more!</p>
-            
-            <div class="youtube-container">
-                <div class="video-card">
-                    <iframe src="https://www.youtube.com/watch?v=VsM_Gd0KkZo&t=58s" title="Guard Attacks" allowfullscreen></iframe>
-                    <div class="video-info">
-                        <h3>Guard Attacks</h3>
-                        <p>Learn this fundamental guard pass that works at all levels</p>
-                    </div>
-                </div>
-                
-                <div class="video-card">
-                    <iframe src="https://youtu.be/KNKmKXWgO14?si=cCt_gOYOG07tJeG9" title="BJJ Competition" allowfullscreen></iframe>
-                    <div class="video-info">
-                        <h3>Wrestling Drill | Knee Roll Drill | Paired Drills | Basics</h3>
-                        <p>Level change, entry, off balance, repeat.</p>
-                    </div>
-                </div>
-                
-                <div class="video-card">
-                    <iframe src="https://www.youtube.com/watch?v=QwYBex1yqk8" title="SLX Sweep" allowfullscreen></iframe>
-                    <div class="video-info">
-                        <h3>SLX Sweep</h3>
-                        <p>Improve your technique with these essential drills</p>
-                    </div>
-                </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/watch?v=VsM_Gd0KkZo&t=69s" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
             </div>
-            
-            <div class="youtube-link">
-                <a href="https://www.youtube.com/@grapplingcommunity2606" class="btn" target="_blank">
-                    <i class="fab fa-youtube"></i> Visit Our YouTube Channel
+            <div class="video-info">
+                <h3>Latest Training Session</h3>
+                <p>Watch our most recent uploads instructionals</p>
+                <a href="https://www.youtube.com/@grapplingcommunity2606" target="_blank">
+                    Visit Our YouTube Channel
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section">
+    <section id="contact">
         <div class="container">
             <div class="section-title">
                 <h2>Contact Us</h2>
@@ -778,67 +636,44 @@
             <div class="contact-container">
                 <div class="contact-info">
                     <h3>Get In Touch</h3>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Location</h4>
-                                <p>Heywood Sports & Fitness, <br> Walcot Road, <br> Diss, <br> Norfolk, <br> IP22 4DB</p>
-                            </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Phone</h4>
-                                <p>+447727076261</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Email</h4>
-                                <p>alecgayson@phystroop.co.uk</p>
-                            </div>
+                        <div class="contact-text">
+                            <h4>Location</h4>
+                            <p>Heywood Sports & Fitness,<br>Walcot Road, Diss,<br>Norfolk, IP22 4DB</p>
                         </div>
                     </div>
                     
-                    <div class="map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2435.441657651907!2d1.1145651760914272!3d52.38054347202496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d9c0f2691c3dbd%3A0x753ef974239f9ed1!2sHeywood%20Sports%20%26%20Fitness!5e0!3m2!1sen!2suk!4v1748903346443!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p><a href="tel:+447727076261">+44 7727 076261</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p><a href="mailto:alecgayson@phystroop.co.uk">alecgayson@phystroop.co.uk</a></p>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="contact-form">
-                    <h3>Send Us a Message</h3>
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder="Your Phone">
-                        </div>
-                        <div class="form-group">
-                            <select required>
-                                <option value="" disabled selected>Interested In...</option>
-                                <option value="no-gi">No-GI</option>
-                                <option value="gi">GI</option>
-                                <option value="general">General Enquiry</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Your Message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
+                <div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4870.877763418926!2d1.1159109!3d52.3805938!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d9c0f2691c3dbd%3A0x753ef974239f9ed1!2sHeywood%20Sports%20%26%20Fitness!5e0!3m2!1sen!2suk!4v1749076370732!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                    </div>
+                    <div style="margin-top: 1.5rem; text-align: center;">
+                        <a href="https://maps.app.goo.gl/87PsUWV1NoyhC6Gs7" class="btn" style="color: var(--black); border-color: var(--black);" target="_blank">Get Directions</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -847,84 +682,67 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-container">
-                <div class="footer-about">
-                    <div class="footer-logo">DISS <span>BJJ</span></div>
-                    <p>Brazilian Jiu-Jitsu community in Diss, Norfolk. Suitable for all skill levels.</p>
-                    <div class="social-icons">
-                        <a href="https://www.youtube.com/@grapplingcommunity2606" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.facebook.com/groups/711745335626798/user/100083371476051" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/diss.bjj/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    </div>
+            <div class="footer-content">
+                <h3>DISS BJJ</h3>
+                <p>Brazilian Jiu-Jitsu Community in Diss, Norfolk</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/DissBJJ"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/diss.bjj/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@grapplingcommunity2606" target="_blank"><i class="fab fa-youtube"></i></a>
                 </div>
-                
-                <div class="footer-links">
-                    <h4 class="footer-title">Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#classes">Classes</a></li>
-                        <li><a href="#schedule">Schedule</a></li>
-                        <li><a href="#youtube">Videos</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-contact">
-                    <h4 class="footer-title">Contact Info</h4>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i>Heywood Sports & Fitness, Walcot Road, Diss, Norfolk, IP22 4DB</li>
-                        <li><i class="fas fa-phone"></i> +447727076261</li>
-                        <li><i class="fas fa-envelope"></i> alecgayson@phystroop.co.uk</li>
-                        <li><i class="fas fa-clock"></i> Fri: 19:20, Sat: 09:00</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2025 DISS BJJ - Grappling Community. All Rights Reserved.</p>
+                <p class="copyright">&copy; 2025 DISS BJJ / Grappling Community. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                const target = document.querySelector(this.getAttribute('href'));
+                window.scrollTo({
+                    top: target.offsetTop - 80,
                     behavior: 'smooth'
                 });
             });
         });
         
-        // Mobile menu toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navMenu = document.querySelector('nav ul');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-        });
-        
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('nav ul li a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    navMenu.style.display = 'none';
+        // Simple animation for sections when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
+        }, {
+            threshold: 0.1
         });
         
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.padding = '10px 0';
-                header.style.backgroundColor = 'rgba(18, 18, 18, 0.98)';
-            } else {
-                header.style.padding = '15px 0';
-                header.style.backgroundColor = 'rgba(18, 18, 18, 0.95)';
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+        
+        // Initialize header state
+        window.addEventListener('load', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
             }
         });
     </script>
