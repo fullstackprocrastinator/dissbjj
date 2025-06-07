@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DISS BJJ: The Blue Belt Pathway</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.4s ease;
+            box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .logo span {
+            font-weight: 300;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            font-size: 1rem;
+        }
+        
+        nav ul li a.nav-active {
+            font-weight: 700;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--black);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover:after, nav ul li a.nav-active:after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 150px;
+            padding-bottom: 80px;
+            text-align: center;
+            background-color: var(--light-gray);
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            color: var(--dark-gray);
+        }
+
+        /* General Section Styling */
+        section {
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        section:nth-of-type(odd) {
+            background-color: var(--light-gray);
+        }
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: var(--black);
+        }
+
+        /* Interactive Elements Styling */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            background: var(--white);
+            padding: 1.5rem;
+            border: 1px solid var(--medium-gray);
+        }
+        
+        .clickable-card {
+             border: 1px solid var(--medium-gray);
+             transition: box-shadow 0.3s ease;
+             cursor: pointer;
+        }
+        .clickable-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+        }
+        
+        .clickable-card .card-header {
+            padding: 1rem;
+            font-weight: 600;
+            background-color: #fafafa;
+             border-bottom: 1px solid var(--medium-gray);
+        }
+        .clickable-card .card-content {
+            padding: 1.5rem;
+            display: none; /* Initially hidden */
+        }
+        .clickable-card .card-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .clickable-card .card-content ul li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+         .clickable-card .card-content ul li::before {
+            content: '✓';
+            color: var(--dark-gray);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .tab-controls {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        .tab-button {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--dark-gray);
+            position: relative;
+            transition: color 0.3s;
+        }
+        .tab-button:hover {
+            color: var(--black);
+        }
+        .tab-button.tab-active {
+            color: var(--black);
+            font-weight: 600;
+        }
+        .tab-button.tab-active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--black);
+        }
+        
+        .tab-pane { display: none; }
+        .tab-pane.active { display: block; }
+        
+        .accordion-item {
+            border: 1px solid var(--medium-gray);
+            margin-bottom: 1rem;
+        }
+        .accordion-header {
+            background: var(--white);
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .accordion-header:hover {
+            background-color: var(--light-gray);
+        }
+        .accordion-header h4 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        .accordion-content {
+            padding: 1.5rem;
+            display: none;
+            border-top: 1px solid var(--medium-gray);
+        }
+        .accordion-content ul {
+            padding-left: 1.2rem;
+        }
+        
+        .chart-container {
+            width: 100%;
+            max-width: 450px;
+            margin: 1.5rem auto 0;
+            height: 350px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        th {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            font-weight: 500;
+        }
+        tbody tr:hover {
+            background-color: var(--light-gray);
+        }
+        tbody tr.active {
+            background-color: #e2e8f0; /* A light blue-gray for selection */
+        }
+        
+        .resource-card {
+            display: block;
+            text-decoration: none;
+            color: var(--dark-gray);
+            border: 1px solid var(--medium-gray);
+            padding: 1.5rem;
+            transition: all 0.3s;
+            position: relative;
+            background: var(--white);
+        }
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+        .resource-card.primary {
+            border-color: var(--black);
+            border-width: 2px;
+        }
+        .resource-card h4 {
+            margin-bottom: 0.5rem;
+        }
+        .resource-card p {
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--light-gray);
+            color: var(--dark-gray);
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--black);
+            color: var(--black);
+            margin: 1.5rem 0.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .social-icons a:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.5rem; }
+            .hero h2 { font-size: 2.2rem; }
+            section { padding: 3rem 0; }
+            .header-container { flex-direction: column; }
+            nav ul { margin-top: 1rem; }
+            nav ul li { margin: 0 0.8rem; }
+            .tab-button { padding: 0.8rem 1rem; font-size: 1rem; }
+            .mobile-menu-button { display: block; }
+            nav { display: none; }
+            nav.active { display: block; }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <div class="container header-container">
+            <div class="logo">
+                <h1>DISS BJJ <span>Pathway</span></h1>
+            </div>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#fundamentals" class="nav-link">Fundamentals</a></li>
+                    <li><a href="#curriculum" class="nav-link">Curriculum</a></li>
+                    <li><a href="#mindset" class="nav-link">Mindset</a></li>
+                    <li><a href="#uk-guide" class="nav-link">UK Guide</a></li>
+                    <li><a href="#resources" class="nav-link">Resources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container hero-content">
+                <h2>The Blue Belt Pathway</h2>
+                <p>A comprehensive guide to the fundamental skills, concepts, and mindset required to earn your blue belt at DISS BJJ.</p>
+            </div>
+        </section>
+
+        <section id="fundamentals">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Foundational Concepts</h2>
+                </div>
+                <div class="grid-container" style="align-items: flex-start;">
+                    <div class="card">
+                        <h3>The White Belt Focus</h3>
+                        <p>Your primary goal is to build a strong defensive foundation. This chart illustrates the recommended focus. Survival and escapes form the vast majority of your initial learning, building the confidence needed to develop an offensive game later.</p>
+                        <div class="chart-container">
+                            <canvas id="focusChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Core Principles</h3>
+                        <p class="mb-4">These concepts are the 'why' behind the moves. Click on each principle to learn more.</p>
+                        <div id="principles-container" class="space-y-3"></div>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 2rem;">
+                    <h3 style="text-align: center;">Essential Solo Drills</h3>
+                    <p style="text-align: center; max-width: 800px; margin: 0 auto 1.5rem;">These movements build the muscle memory for escapes and transitions. Practise them consistently to make your reactions on the mat fluid and instinctive.</p>
+                    <div id="drills-container" class="grid-container"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="curriculum">
+            <div class="container">
+                <div class="section-title">
+                    <h2>The Blue Belt Curriculum</h2>
+                </div>
+                <div class="tab-controls">
+                    <button class="tab-button tab-active" data-tab="defence">🛡️ The Art of Survival</button>
+                    <button class="tab-button" data-tab="offence">⚔️ Building Your Offence</button>
+                </div>
+                <div id="tab-content">
+                    <div id="defence-content" class="tab-pane active">
+                        <div style="text-align: center; margin-bottom: 2rem;">
+                            <h3>Defensive Skills & Escapes</h3>
+                            <p style="max-width: 700px; margin: 0 auto;">A blue belt must be able to escape every major bad position. Confidence in your escapes allows you to roll with less fear and more creativity.</p>
+                        </div>
+                        <div id="escapes-container" class="grid-container"></div>
+                    </div>
+                    <div id="offence-content" class="tab-pane">
+                         <div style="text-align: center; margin-bottom: 2rem;">
+                            <h3>Offensive Toolkit</h3>
+                            <p style="max-width: 700px; margin: 0 auto;">Offence begins with taking the fight to the ground and progresses through a hierarchy of control, culminating in a submission. Explore the key offensive stages below.</p>
+                        </div>
+                        <div id="offence-accordion-container"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="mindset">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Mindset & Mat Etiquette</h2>
+                </div>
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>The Learner's Mindset</h3>
+                        <ul id="mindset-list" style="list-style: none;"></ul>
+                    </div>
+                    <div class="card">
+                        <h3>UK Gym Etiquette Checklist</h3>
+                        <ul id="etiquette-container" style="list-style: none;"></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="uk-guide">
+            <div class="container">
+                <div class="section-title">
+                    <h2>A Guide to BJJ in the UK</h2>
+                </div>
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>The UKBJJA</h3>
+                        <p>The United Kingdom Brazilian Jiu Jitsu Association (UKBJJA) is the National Governing Body for BJJ in the UK. It promotes safety standards, provides insurance, and organises events.</p>
+                        <a href="https://www.ukbjja.org/" target="_blank" class="btn-link">Visit UKBJJA Website</a>
+                    </div>
+                    <div class="card">
+                        <h3>Beginner's Guide to Competition</h3>
+                        <p>While optional, competing can accelerate your learning. Most UK competitions follow IBJJF rules. Here's a basic point summary for white belts (5-minute matches):</p>
+                        <table id="competition-points-container" style="margin-top: 1rem;"></table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resources">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Resources for Continued Growth</h2>
+                </div>
+                <div id="resources-container" class="grid-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>DISS BJJ</h3>
+                <p>Brazilian Jiu-Jitsu Community in Diss, Norfolk</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/DissBJJ"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/diss.bjj/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@grapplingcommunity2606" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p class="copyright">&copy; 2025 Grappling Community Ltd / Let's Train - Diss BJJ. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    const bjjData = {
+        principles: [
+            { name: 'Posture', desc: 'Maintaining a strong, upright structure to defend against attacks and initiate offence.' },
+            { name: 'Base', desc: 'A stable connection to the ground via knees, feet, and hands to prevent sweeps.' },
+            { name: 'Connection', desc: 'Maintaining contact points to control an opponent and feel their movements.' },
+            { name: 'Pressure', desc: 'Using body weight and leverage to immobilise an opponent.' },
+            { name: 'Leverage', desc: 'The core of BJJ; using angles and mechanics to overcome size and strength.' },
+            { name: 'Frames', desc: 'Using limbs to create space and block an opponent from closing distance.' }
+        ],
+        drills: [
+            { name: 'Shrimping', icon: '🦐' }, { name: 'Bridging', icon: '🌉' },
+            { name: 'Technical Stand-up', icon: '🚶' }, { name: 'Breakfalls', icon: '🤸' },
+            { name: 'Sprawl', icon: '🐊' }, { name: 'Forward/Backward Rolls', icon: '🔄' },
+            { name: 'Pummelling', icon: '🤝' }
+        ],
+        mindset: [
+            '<b>Leave Ego at the Door:</b> Be open to tapping and learning from mistakes.',
+            '<b>Patience & Consistency:</b> Progress is a marathon, not a sprint. Show up regularly.',
+            '<b>Deliberate Practice:</b> Drill with purpose. Focus on mastering fundamentals, not just collecting moves.',
+            '<b>Roll for Learning:</b> Use sparring to experiment and refine, not to "win" in the gym.'
+        ],
+        escapes: [
+            { position: 'The Mount', techniques: ['Elbow Escape (Shrimping)', 'Upa Escape (Bridging)', 'Trap and Roll'] },
+            { position: 'Side Control', techniques: ['Framing Escape to Guard', 'Bump and Shoot', 'Turning to Turtle'] },
+            { position: 'Back Control', techniques: ['Hand Fighting to Defend Choke', 'Body Triangle Escape', 'Shoulder Walk Escape'] },
+            { position: 'Knee-on-Belly', techniques: ['Hip Bump & Shrimp', 'Circling Leg Escape', 'Pushing the Knee'] }
+        ],
+        offence: [
+            {
+                title: 'Takedowns & Defence', icon: '🥋',
+                content: 'A blue belt should know at least one reliable way to take an opponent down and how to defend the most common takedown attempts.',
+                techniques: [ { name: 'Single Leg Takedown' }, { name: 'Double Leg Takedown' }, { name: 'O Goshi (Hip Throw)'}, { name: 'Sprawl (Defence)'} ]
+            },
+            {
+                title: 'Passing the Guard', icon: '🚧',
+                content: 'Navigating past an opponent\'s legs to get to a dominant position. Good posture and hip control are key.',
+                techniques: [ { name: 'Knee Cut/Slice Pass' }, { name: 'Toreando (Bullfighter) Pass' }, { name: 'Double Under Pass' }, { name: 'Stack Pass' } ]
+            },
+            {
+                title: 'Sweeps from Guard', icon: '🔄',
+                content: 'Reversing the position from the bottom. Sweeps unbalance your opponent so you can get on top.',
+                techniques: [ { name: 'Scissor Sweep' }, { name: 'Hip Bump Sweep' }, { name: 'Butterfly Sweep' }, { name: 'Flower Sweep' } ]
+            },
+            {
+                title: 'Submissions: The Finishers', icon: '💥',
+                content: 'A blue belt should have a few high-percentage submissions they can reliably set up from dominant positions. This matrix is interactive: click any submission to learn more.',
+                isMatrix: true,
+            }
+        ],
+        submissionMatrix: [
+             { name: 'Armbar', position: 'Mount, Guard', principle: 'Isolate limb, use hips for extension.' },
+             { name: 'Rear Naked Choke', position: 'Back Control', principle: 'Secure seatbelt grip, apply squeezing pressure.' },
+             { name: 'Kimura', position: 'Side Control, Guard', principle: 'Figure-four grip, isolate shoulder.' },
+             { name: 'Triangle Choke', position: 'Guard', principle: 'Use legs to encircle neck and one arm.' },
+             { name: 'Americana', position: 'Mount, Side Control', principle: 'Isolate bent arm, use figure-four grip.' },
+             { name: 'Guillotine Choke', position: 'Guard, Sprawl', principle: 'Encircle neck with arm from the front.' },
+             { name: 'Straight Ankle Lock', position: 'Open Guard', principle: 'Isolate foot, extend/arch back.' },
+             { name: 'Cross Collar Choke', position: 'Mount, Guard', principle: 'Use opponent\'s collar for a blood choke.' }
+        ],
+        etiquette: [
+            { rule: 'Shower, use deodorant, wear clean gear.', reason: 'Hygiene is respect.' },
+            { rule: 'Keep fingernails and toenails short.', reason: 'Prevents scratches.' },
+            { rule: 'Ask to roll, respect "no".', reason: 'Consent is mandatory.' },
+            { rule: 'Tap clearly and early. Respect the tap.', reason: 'Prevents injury.' },
+            { rule: 'Apply submissions with control, not speed.', reason: 'Partner safety is key.' },
+            { rule: 'Wear footwear off the mats.', reason: 'Keeps mats clean.' }
+        ],
+        competitionPoints: [
+            { action: 'Takedown', points: 2 }, { action: 'Sweep', points: 2 },
+            { action: 'Knee-on-Belly', points: 2 }, { action: 'Guard Pass', points: 3 },
+            { action: 'Mount', points: 4 }, { action: 'Back Control', points: 4 },
+        ],
+        resources: [
+            { name: 'Grappling Community', url: 'https://www.youtube.com/@grapplingcommunity2606', primary: true },
+            { name: 'Bernardo Faria BJJ', url: 'https://www.youtube.com/@bernardofariabjj' },
+            { name: 'Stephan Kesting (Grapplearts)', url: 'https://www.youtube.com/@StephanKesting' },
+            { name: 'Chewjitsu', url: 'https://www.youtube.com/@Chewjitsu' },
+            { name: 'BJJ Scout', url: 'https://www.youtube.com/@BJJScout' },
+            { name: 'IBJJF', url: 'https://www.youtube.com/@ibjjf' },
+        ]
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Populate dynamic content
+        const principlesContainer = document.getElementById('principles-container');
+        bjjData.principles.forEach(p => {
+            const div = document.createElement('div');
+            div.className = 'clickable-card';
+            div.innerHTML = `<div class="card-header">${p.name}</div><div class="card-content">${p.desc}</div>`;
+            principlesContainer.appendChild(div);
+        });
+
+        const drillsContainer = document.getElementById('drills-container');
+        bjjData.drills.forEach(d => {
+            drillsContainer.innerHTML += `<div class="card" style="text-align: center;"><div style="font-size: 2.5rem;">${d.icon}</div><p style="margin:0; font-weight: 500;">${d.name}</p></div>`;
+        });
+        
+        const mindsetList = document.getElementById('mindset-list');
+        bjjData.mindset.forEach(m => {
+             mindsetList.innerHTML += `<li style="display: flex; margin-bottom: 1rem;"><span style="margin-right: 10px; color: var(--black); font-weight: bold;">✓</span><span>${m}</span></li>`
+        });
+
+        const escapesContainer = document.getElementById('escapes-container');
+        bjjData.escapes.forEach(e => {
+            const card = document.createElement('div');
+            card.className = 'clickable-card';
+            card.innerHTML = `
+                <div class="card-header">${e.position}</div>
+                <div class="card-content"><ul>${e.techniques.map(t => `<li>${t}</li>`).join('')}</ul></div>
+            `;
+            escapesContainer.appendChild(card);
+        });
+        
+        const offenceAccordionContainer = document.getElementById('offence-accordion-container');
+        bjjData.offence.forEach(category => {
+            const item = document.createElement('div');
+            item.className = 'accordion-item';
+            let contentHTML = '';
+            if (category.isMatrix) {
+                contentHTML = `<p>${category.content}</p>
+                <div class="grid-container" style="gap: 1rem; margin-top: 1rem;">
+                    <div style="grid-column: span 1 / span 2;">
+                        <table id="submission-table"></table>
+                    </div>
+                    <div id="submission-detail" class="card" style="align-self: flex-start;"><p>Click a submission for details.</p></div>
+                </div>`;
+            } else {
+                contentHTML = `<p>${category.content}</p><ul style="margin-top: 1rem;">${category.techniques.map(t => `<li>${t.name}</li>`).join('')}</ul>`;
+            }
+            item.innerHTML = `
+                <div class="accordion-header"><h4>${category.icon} ${category.title}</h4><span>+</span></div>
+                <div class="accordion-content">${contentHTML}</div>
+            `;
+            offenceAccordionContainer.appendChild(item);
+        });
+
+        const subTable = document.getElementById('submission-table');
+        if (subTable) {
+            let tableHTML = '<thead><tr><th>Submission</th><th>Position</th></tr></thead><tbody>';
+            bjjData.submissionMatrix.forEach(sub => {
+                tableHTML += `<tr data-name="${sub.name}"><td>${sub.name}</td><td>${sub.position}</td></tr>`;
+            });
+            tableHTML += '</tbody>';
+            subTable.innerHTML = tableHTML;
+
+            subTable.querySelectorAll('tbody tr').forEach(row => {
+                row.addEventListener('click', () => {
+                    const subName = row.dataset.name;
+                    const subData = bjjData.submissionMatrix.find(s => s.name === subName);
+                    document.getElementById('submission-detail').innerHTML = `
+                        <h4>${subData.name}</h4>
+                        <p><strong>Key Principle:</strong> ${subData.principle}</p>
+                    `;
+                    subTable.querySelectorAll('tbody tr').forEach(r => r.classList.remove('active'));
+                    row.classList.add('active');
+                });
+            });
+        }
+        
+        const etiquetteContainer = document.getElementById('etiquette-container');
+        bjjData.etiquette.forEach(e => {
+             etiquetteContainer.innerHTML += `<li style="display: flex; margin-bottom: 1rem;"><span style="margin-right: 10px; color: var(--black); font-weight: bold;">✓</span><span><b>${e.rule}</b> (${e.reason})</span></li>`;
+        });
+
+        const competitionPointsContainer = document.getElementById('competition-points-container');
+        let compTableHTML = '<thead><tr><th>Action</th><th>Points</th></tr></thead><tbody>';
+        bjjData.competitionPoints.forEach(p => {
+            compTableHTML += `<tr><td>${p.action}</td><td style="text-align: right; font-weight: 600;">${p.points}</td></tr>`;
+        });
+        compTableHTML += '</tbody>';
+        competitionPointsContainer.innerHTML = compTableHTML;
+        
+        const resourcesContainer = document.getElementById('resources-container');
+        bjjData.resources.forEach(r => {
+             resourcesContainer.innerHTML += `
+                <a href="${r.url}" target="_blank" class="resource-card ${r.primary ? 'primary' : ''}">
+                    <h4>${r.name}</h4>
+                    <p>Visit Channel →</p>
+                    ${r.primary ? '<span style="position: absolute; top: 0; right: 0; background: var(--black); color: var(--white); padding: 0.2rem 0.5rem; font-size: 0.7rem; font-weight: 600;">OUR CHANNEL</span>' : ''}
+                </a>`;
+        });
+        
+
+        // Chart.js
+        const focusChartCtx = document.getElementById('focusChart').getContext('2d');
+        new Chart(focusChartCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Survival & Escapes', 'Positional Control & Passing', 'Submissions', 'Takedowns'],
+                datasets: [{
+                    label: 'White Belt Focus',
+                    data: [50, 25, 15, 10],
+                    backgroundColor: ['#333333', '#6b7280', '#9ca3af', '#d1d5db'],
+                    borderColor: 'var(--light-gray)',
+                    borderWidth: 4,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { color: 'var(--dark-gray)' } },
+                }
+            }
+        });
+
+        // Interactivity
+        document.querySelectorAll('.clickable-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                // To allow clicking links inside the card
+                if (e.target.tagName.toLowerCase() === 'a') return;
+                const content = card.querySelector('.card-content');
+                if (content) {
+                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                }
+            });
+        });
+
+        const tabs = document.querySelectorAll('.tab-button');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('tab-active'));
+                tab.classList.add('tab-active');
+                const target = tab.dataset.tab;
+                tabPanes.forEach(pane => {
+                    pane.classList.toggle('active', pane.id === `${target}-content`);
+                });
+            });
+        });
+        
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                header.querySelector('span').textContent = content.style.display === 'block' ? '-' : '+';
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80, // Offset for fixed header
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    navLinks.forEach(link => {
+                        link.classList.toggle('nav-active', link.getAttribute('href').substring(1) === entry.target.id);
+                    })
+                }
+            });
+        }, { rootMargin: "-30% 0px -70% 0px"});
+        sections.forEach(sec => observer.observe(sec));
+    });
+    </script>
+</body>
+</html>
