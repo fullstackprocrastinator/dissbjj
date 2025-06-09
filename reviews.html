@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DISS BJJ | Member Reviews</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--medium-gray);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0;
+            font-weight: 700;
+            color: var(--black);
+        }
+        
+        .logo span {
+            font-weight: 300;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            font-size: 1rem;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--black);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        /* Page specific styles */
+        .main-content {
+            padding: 4rem 0 6rem;
+        }
+        
+        /* Sections */
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: var(--black);
+        }
+
+        /* Reviews Section */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: var(--light-gray);
+            padding: 2.5rem 2rem 2rem;
+            border: 1px solid var(--medium-gray);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .review-card .fa-quote-left {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 1.5rem;
+            color: var(--medium-gray);
+        }
+        
+        .review-text {
+            flex-grow: 1;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .review-author {
+            text-align: right;
+        }
+
+        .author-name {
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 0.25rem;
+        }
+
+        .author-capacity {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--light-gray);
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        footer h3 {
+            color: var(--white);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-icons {
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--white);
+            border-radius: 0;
+            color: var(--white);
+            margin: 0 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+        
+        .copyright {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="main-header">
+        <div class="container header-container">
+            <div class="logo">
+                <h1>DISS <span>BJJ</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <!-- Note: These links now point to the main page (assuming it's named index.html) -->
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#schedule">Schedule</a></li>
+                    <li><a href="index.html#youtube">Videos</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section id="reviews">
+            <div class="container">
+                <div class="section-title">
+                    <h2>All Member Reviews</h2>
+                </div>
+                <div class="reviews-grid">
+                    <!-- Review 1 -->
+                    <div class="review-card">
+                        <i class="fas fa-quote-left"></i>
+                        <p class="review-text">I was nervous to start BJJ, but Alec and the team have been incredibly welcoming. The instruction is clear and patient. It's a fantastic atmosphere to learn in.</p>
+                        <div class="review-author">
+                            <p class="author-name">John D.</p>
+                            <p class="author-capacity">Beginner</p>
+                        </div>
+                    </div>
+                    <!-- Review 2 -->
+                    <div class="review-card">
+                        <i class="fas fa-quote-left"></i>
+                        <p class="review-text">Top-tier training. The focus on detail and technique from Alec is second to none. The club has seriously elevated my competition game. Great sparring partners too.</p>
+                        <div class="review-author">
+                            <p class="author-name">Sarah K.</p>
+                            <p class="author-capacity">Competitor</p>
+                        </div>
+                    </div>
+                    <!-- Review 3 -->
+                    <div class="review-card">
+                        <i class="fas fa-quote-left"></i>
+                        <p class="review-text">The perfect way to de-stress and get fit. Everyone is friendly, there are no egos on the mat, and I always leave feeling like I've learned something new. #LetsTrain</p>
+                        <div class="review-author">
+                            <p class="author-name">Emily W.</p>
+                            <p class="author-capacity">Hobbyist</p>
+                        </div>
+                    </div>
+                    <!-- Review 4 -->
+                     <div class="review-card">
+                        <i class="fas fa-quote-left"></i>
+                        <p class="review-text">My son has gained so much confidence since joining Diss BJJ. It's more than just a sport; it teaches respect and discipline. Highly recommend it for kids.</p>
+                        <div class="review-author">
+                            <p class="author-name">Mike R.</p>
+                            <p class="author-capacity">Parent</p>
+                        </div>
+                    </div>
+                    <!-- Review 5 -->
+                    <div class="review-card">
+                        <i class="fas fa-quote-left"></i>
+                        <p class="review-text">As a veteran, finding a community with this level of camaraderie is rare. Alec's background brings a unique and effective approach to grappling. It feels like being part of a team again.</p>
+                        <div class="review-author">
+                            <p class="author-name">David L.</p>
+                            <p class="author-capacity">Ex-Military</p>
+                        </div>
+                    </div>
+                    <!-- Review 6 -->
+                    <div class="review-card">
+                        <i class="fas fa-quote-left"></i>
+                        <p class="review-text">Forget the boring gym routine! BJJ is a full-body workout that's actually fun. I've never been in better shape, and I'm learning a valuable skill at the same time.</p>
+                        <div class="review-author">
+                            <p class="author-name">Chloe T.</p>
+                            <p class="author-capacity">Fitness Enthusiast</p>
+                        </div>
+                    </div>
+                    <!-- Review 7 -->
+                    <div class="review-card">
+                        <i class="fas fa-quote-left"></i>
+                        <p class="review-text">The depth of knowledge here is incredible. I've been training for years and I'm still learning new details every single class. A real gem of a club.</p>
+                        <div class="review-author">
+                            <p class="author-name">Tom P.</p>
+                            <p class="author-capacity">Advanced Student</p>
+                        </div>
+                    </div>
+                    <!-- Review 8 -->
+                    <div class="review-card">
+                        <i class="fas fa-quote-left"></i>
+                        <p class="review-text">I joined to learn self-defense and have found so much more. It's a supportive community that pushes you to be your best, on and off the mats.</p>
+                        <div class="review-author">
+                            <p class="author-name">Laura G.</p>
+                            <p class="author-capacity">Beginner</p>
+                        </div>
+                    </div>
+                    <!-- Review 9 -->
+                    <div class="review-card">
+                        <i class="fas fa-quote-left"></i>
+                        <p class="review-text">Fantastic place. Clean mats, great people, and world-class instruction. Can't ask for more.</p>
+                        <div class="review-author">
+                            <p class="author-name">Ben S.</p>
+                            <p class="author-capacity">Hobbyist</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>DISS BJJ</h3>
+                <p>Brazilian Jiu-Jitsu Community in Diss, Norfolk</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/DissBJJ"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/diss.bjj/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@grapplingcommunity2606" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p class="copyright">&copy; 2025 Grappling Community Ltd / Let's Train - Diss BJJ. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
