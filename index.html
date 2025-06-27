@@ -13,6 +13,10 @@
             --light-gray: #f5f5f5;
             --medium-gray: #e0e0e0;
             --dark-gray: #333333;
+            --warning-yellow-bg: #fff3cd;
+            --warning-yellow-border: #ffeeba;
+            --warning-yellow-accent: #ffc107;
+            --warning-yellow-text: #856404;
         }
         
         * {
@@ -258,14 +262,19 @@
             background-color: var(--light-gray);
             border-bottom: 1px solid var(--medium-gray);
         }
+
+        /* Wrapper for the schedule table to handle responsiveness */
+        .schedule-table-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            overflow-x: auto; /* Makes it scrollable on small screens */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            background: var(--white);
+        }
         
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 0 auto;
-            max-width: 700px;
-            background: var(--white);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
         
         .schedule-table th {
@@ -284,6 +293,50 @@
         
         .schedule-table tr:last-child td {
             border-bottom: none;
+        }
+
+        /* --- Training Dates Notice --- */
+        .training-notice {
+            max-width: 700px;
+            margin: 2rem auto 0;
+            padding: 1.5rem 2rem;
+            background-color: var(--warning-yellow-bg);
+            border: 1px solid var(--warning-yellow-border);
+            border-left: 5px solid var(--warning-yellow-accent);
+            text-align: left;
+        }
+        .training-notice h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--warning-yellow-text);
+            font-size: 1.5rem;
+        }
+        .training-notice p {
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+        }
+        .training-notice ul {
+            list-style-type: none;
+            margin-bottom: 1rem;
+            padding-left: 0;
+        }
+        .training-notice li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 25px;
+        }
+        .training-notice li::before {
+            content: '\f071'; /* Font Awesome Exclamation Triangle */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--warning-yellow-accent);
+        }
+        .training-notice .tbc-notice {
+            margin-top: 1.5rem;
+            font-style: italic;
         }
 
         /* Review Section */
@@ -726,30 +779,51 @@
             <div class="section-title">
                 <h2>Class Schedule</h2>
             </div>
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th>Day</th>
-                        <th>Class</th>
-                        <th>Time</th>
-                        <th>Instructor</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Friday</td>
-                        <td>NoGI</td>
-                        <td>19:20</td>
-                        <td>Alec Gayson</td>
-                    </tr>
-                    <tr>
-                        <td>Saturday</td>
-                        <td>GI</td>
-                        <td>09:00</td>
-                        <td>Alec Gayson</td>
-                    </tr>
-                </tbody>
-            </table>
+            <!-- START: Table Wrapper for responsiveness -->
+            <div class="schedule-table-wrapper">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Class</th>
+                            <th>Time</th>
+                            <th>Instructor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Friday</td>
+                            <td>NoGI</td>
+                            <td>19:20</td>
+                            <td>Alec Gayson</td>
+                        </tr>
+                        <tr>
+                            <td>Saturday</td>
+                            <td>GI</td>
+                            <td>09:00</td>
+                            <td>Alec Gayson</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- END: Table Wrapper -->
+            
+            <!-- START: Training Dates Notice -->
+            <div class="training-notice">
+                <h3>Training Updates</h3>
+                <p><strong>Please note, there will be NO training on the following dates:</strong></p>
+                <ul>
+                    <li>Friday 4th & Saturday 5th July</li>
+                    <li>Friday 1st & Saturday 2nd August</li>
+                </ul>
+                <p><strong>Training may also be cancelled on these dates (TBC):</strong></p>
+                <ul>
+                    <li>Friday 25th & Saturday 26th July</li>
+                    <li>Friday 8th & Saturday 9th August</li>
+                </ul>
+            </div>
+            <!-- END: Training Dates Notice -->
+
             <div style="text-align: center; margin-top: 2rem;">
                 <p><strong>Location:</strong> Heywood Sports & Fitness, Walcot Road, Diss, Norfolk, IP22 4DB</p>
             </div>
@@ -969,8 +1043,8 @@
             const month = now.getMonth(); // 5 = June, 6 = July, 7 = August
             const year = now.getFullYear();
 
-            // This will only work in 2025. Adjust year if needed for future use.
-            if (year === 2025 && (month >= 5 && month <= 7)) {
+            // This will only work for the current year. Adjust year if needed.
+            if (year === new Date().getFullYear() && (month >= 5 && month <= 7)) {
                 return true;
             }
             
