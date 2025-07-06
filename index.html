@@ -295,6 +295,34 @@
             border-bottom: none;
         }
 
+        /* --- Costing Info Section --- */
+        .costing-info {
+            max-width: 700px;
+            margin: 2rem auto 0;
+            padding: 2rem;
+            background-color: var(--white);
+            border: 1px solid var(--medium-gray);
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .costing-info h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: var(--black);
+        }
+        .costing-info p {
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+            font-size: 1.1rem;
+        }
+        .costing-info .payment-methods {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: #555;
+            margin-top: 1rem;
+        }
+
         /* --- Training Dates Notice --- */
         .training-notice {
             max-width: 700px;
@@ -808,14 +836,22 @@
             </div>
             <!-- END: Table Wrapper -->
             
+            <!-- START: Costing Info -->
+            <div class="costing-info">
+                <h3>Pricing</h3>
+                <p>Currently operating a simple pay as you train routine for just <strong>£8 per class.</strong></p>
+                <p class="payment-methods">Card or cash accepted (no change available).</p>
+            </div>
+            <!-- END: Costing Info -->
+
             <!-- START: Training Dates Notice -->
             <div class="training-notice">
                 <h3>Training Updates</h3>
                 <p><strong>Please note, there will be NO training on the following dates:</strong></p>
                 <ul>
-                    <li>Friday 4th & Saturday 5th July</li>
                     <li>Friday 1st & Saturday 2nd August</li>
                 </ul>
+            </div>
             <!-- END: Training Dates Notice -->
 
             <div style="text-align: center; margin-top: 2rem;">
