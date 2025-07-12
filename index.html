@@ -263,6 +263,25 @@
             border-bottom: 1px solid var(--medium-gray);
         }
 
+        /* --- Form Intro Box --- */
+        .form-intro {
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+            padding: 2rem;
+            background: var(--white);
+            border: 1px solid var(--medium-gray);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .form-intro h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .form-intro p {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
         /* Wrapper for the schedule table to handle responsiveness */
         .schedule-table-wrapper {
             max-width: 700px;
@@ -804,6 +823,36 @@
     <!-- Schedule Section -->
     <section class="schedule" id="schedule">
         <div class="container">
+
+            <!-- Form Intro -->
+            <div class="form-intro">
+                <h3>Interested in a free taster session?</h3>
+                <p>Let us know here…</p>
+            </div>
+
+            <!-- Form Embed -->
+            <div class="form-wrapper" style="max-width: 700px; margin: 0 auto 5rem auto; height: 511px;">
+                <iframe
+                    src="https://link.saleshero.uk/widget/form/j3HFCtTUuJP3HEDCjIHw"
+                    style="width:100%;height:100%;border:none;border-radius:3px"
+                    id="inline-j3HFCtTUuJP3HEDCjIHw" 
+                    data-layout="{'id':'INLINE'}"
+                    data-trigger-type="alwaysShow"
+                    data-trigger-value=""
+                    data-activation-type="alwaysActivated"
+                    data-activation-value=""
+                    data-deactivation-type="neverDeactivate"
+                    data-deactivation-value=""
+                    data-form-name="Website Contact Form"
+                    data-height="511"
+                    data-layout-iframe-id="inline-j3HFCtTUuJP3HEDCjIHw"
+                    data-form-id="j3HFCtTUuJP3HEDCjIHw"
+                    title="Website Contact Form"
+                        >
+                </iframe>
+                <script src="https://link.saleshero.uk/js/form_embed.js"></script>
+            </div>
+
             <div class="section-title">
                 <h2>Class Schedule</h2>
             </div>
