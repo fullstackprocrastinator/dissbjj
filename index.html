@@ -1034,10 +1034,10 @@
     <div id="incentive-modal" class="modal-overlay">
         <div class="modal-content">
             <span class="modal-close-btn">&times;</span>
-            <h2>THE AUGUST INCENTIVE!</h2>
-            <p>Through August, get <strong>your session for free</strong> if you bring someone who hasn’t trained at Diss BJJ before. Whatever level they are.</p>
-            <p><strong>Their session is FREE too!</strong></p>
-            <a href="#schedule" class="btn dark modal-link">Find a Class</a>
+            <h2>Try Your First Session For FREE!</h2>
+            <p>New to BJJ? Or just new to Diss BJJ? Come and try your first session on us. No obligations, just pure grappling.</p>
+            <p><strong>Experience BJJ, meet our community!</strong></p>
+            <a href="#schedule" class="btn dark modal-link">Book Your Free Session</a>
         </div>
     </div>
 
@@ -1062,9 +1062,11 @@
             anchor.addEventListener('click', function (e) {
                 // Exclude modal links from this behavior to allow the modal to close properly
                 if (this.classList.contains('modal-link')) {
-                    return;
+                    // Prevent default scrolling for modal link only if it's handled by smooth scroll logic
+                    // The smooth scroll for the modal link will be handled separately below
+                    // This ensures the modal closes AND the page scrolls
+                    e.preventDefault(); 
                 }
-                e.preventDefault();
                 
                 const targetId = this.getAttribute('href');
                 const target = document.querySelector(targetId);
@@ -1100,7 +1102,7 @@
         // --- Incentive Modal Logic ---
         const modal = document.getElementById('incentive-modal');
         const closeModalBtn = document.querySelector('.modal-close-btn');
-        const modalLink = document.querySelector('.modal-link');
+        const modalLink = document.querySelector('.modal-link'); // Get the new modal link
 
         const showModal = () => {
             modal.classList.add('show');
@@ -1109,27 +1111,16 @@
         const closeModal = () => {
             modal.classList.remove('show');
             // Use sessionStorage to only show the modal once per browser session
-            sessionStorage.setItem('dissBjjIncentiveClosed', 'true');
+            sessionStorage.setItem('dissBjjFreeTasterClosed', 'true'); // Changed key name
         };
 
-        // Check if the modal should be shown
+        // Check if the modal should be shown (always show if not closed in session)
         const shouldShowModal = () => {
             // Check if user has already closed it this session
-            if (sessionStorage.getItem('dissBjjIncentiveClosed')) {
+            if (sessionStorage.getItem('dissBjjFreeTasterClosed')) {
                 return false;
             }
-
-            // Show the modal in June, July, and August
-            const now = new Date();
-            const month = now.getMonth(); // 5 = June, 6 = July, 7 = August
-            const year = now.getFullYear();
-
-            // This will only work for the current year. Adjust year if needed.
-            if (year === new Date().getFullYear() && (month >= 5 && month <= 7)) {
-                return true;
-            }
-            
-            return false;
+            return true; // Always show the free taster session modal if not closed
         };
         
         if (modal && shouldShowModal()) {
@@ -1140,7 +1131,19 @@
         // Event listeners for closing the modal
         if (modal) {
             closeModalBtn.addEventListener('click', closeModal);
-            modalLink.addEventListener('click', closeModal); // Also close when CTA is clicked
+            // Modified modalLink click to close modal and then scroll to form
+            modalLink.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default anchor jump initially
+                closeModal(); // Close the modal
+                // Manually trigger smooth scroll to the form after closing the modal
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80, // Adjust for fixed header height
+                        behavior: 'smooth'
+                    });
+                }
+            }); 
             modal.addEventListener('click', function(e) {
                 // Close if the user clicks on the overlay (the parent element)
                 if (e.target === modal) {
