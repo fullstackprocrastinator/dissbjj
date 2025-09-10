@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your First BJJ Class | DISS BJJ, Norfolk</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <script data-goatcounter="https://bengouldingdev.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+    <style>
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+        
+        /* --- Header --- */
+        header {
+            background-color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--medium-gray);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0;
+            font-weight: 700;
+            color: var(--black);
+        }
+        
+        .logo span {
+            font-weight: 300;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            font-size: 1rem;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--black);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        /* --- Hero Section --- */
+        .hero {
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.5), 
+                rgba(0, 0, 0, 0.5)), 
+                url('https://placehold.co/1200x600/333333/f5f5f5?text=Diss+BJJ+Team') no-repeat center center/cover;
+            padding: 8rem 0;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- Main Content --- */
+        .main-content {
+            padding: 4rem 0;
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .content-section h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .content-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 2px;
+            background: var(--black);
+        }
+
+        .content-section p, .content-section ul {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* --- FAQ Section --- */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .faq-item {
+            background: var(--light-gray);
+            border: 1px solid var(--medium-gray);
+            padding: 1.5rem 2rem;
+        }
+
+        .faq-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        /* --- What to Wear --- */
+        .attire-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        .attire-item {
+            padding: 2rem;
+            border: 1px solid var(--medium-gray);
+            background: var(--light-gray);
+        }
+        .attire-item .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        .attire-item h3 {
+            font-size: 1.4rem;
+        }
+
+        /* --- Call to Action --- */
+        .cta-section {
+            background-color: var(--light-gray);
+            text-align: center;
+            padding: 5rem 0;
+            border-bottom: none;
+        }
+        .cta-section h2 {
+            font-size: 2rem;
+        }
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--black);
+            color: var(--white);
+            padding: 14px 35px;
+            border-radius: 0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 1px solid var(--black);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        .btn:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+        
+        /* --- Footer --- */
+        footer {
+            background: var(--white);
+            color: var(--dark-gray);
+            padding: 3rem 0 2rem;
+            text-align: center;
+            border-top: 1px solid var(--medium-gray);
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--black);
+            color: var(--black);
+            margin: 0 0.5rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-icons a:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-container { flex-direction: column; text-align: center; }
+            nav ul { margin-top: 1rem; justify-content: center; flex-wrap: wrap; }
+            nav ul li { margin: 0.5rem 1rem; }
+            .hero-content h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>DISS <span>BJJ</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="newcomers.html">First Class?</a></li>
+                    <li><a href="index.html#schedule">Schedule</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Your First Class at Diss BJJ</h1>
+            <p>Taking the first step into Brazilian Jiu-Jitsu can be daunting, but we're here to make it as welcoming and enjoyable as possible. This guide is for you.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+
+            <!-- Welcome Section -->
+            <section class="content-section">
+                <h2>Welcome to the Mats</h2>
+                <p>First things first: relax. Every single person at our club, including our black belt instructor, had a first day. We remember what it felt like to be new. At Diss BJJ, our priority is to create a safe, friendly, and supportive environment where everyone can learn and grow, regardless of their starting point. You don't need any prior experience, just a willingness to learn.</p>
+            </section>
+
+            <!-- What to Expect Section -->
+            <section class="content-section">
+                <h2>What to Expect in Your First Class</h2>
+                <p>Our classes follow a consistent structure, so you'll quickly get the hang of things. Here’s a simple breakdown:</p>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>1. The Warm-Up</h3>
+                        <p>We start with a light warm-up to get your body moving and help prevent injuries. This usually involves jogging, stretching, and some BJJ-specific movements like shrimping and break-falls. Don't worry if the movements are new to you – just follow along and do your best. We'll guide you through it.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>2. Technique of the Day</h3>
+                        <p>Next, our instructor, Alec, will demonstrate a technique. He'll break it down step-by-step. You'll then partner up with someone to drill this technique. We rotate partners, so you'll get to meet a few different people. This part of the class is all about learning and repetition, not competition.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>3. Positional Sparring / Rolling</h3>
+                        <p>Towards the end of the class, there's an opportunity for controlled sparring, known as "rolling". As a complete beginner, your safety is our top priority. You may be asked to just watch for your first session, or you might be paired with an experienced member for some very light, positional drilling. There's no pressure to do anything you're not comfortable with.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- What to Wear Section -->
+            <section class="content-section">
+                <h2>What Should I Wear?</h2>
+                <p>We have two types of classes: Gi and No-Gi. For your free taster session, you don't need to buy any special equipment. Just wear comfortable sportswear.</p>
+                <div class="attire-grid">
+                    <div class="attire-item">
+                        <div class="icon"><i class="fas fa-tshirt"></i></div>
+                        <h3>No-Gi Class (Fridays)</h3>
+                        <p>Comfortable athletic clothing is perfect. Think shorts or leggings (without zips or pockets) and a t-shirt or rash guard. Essentially, anything you'd wear to the gym.</p>
+                    </div>
+                    <div class="attire-item">
+                        <div class="icon"><i class="fas fa-user-ninja"></i></div>
+                        <h3>Gi Class (Saturdays)</h3>
+                        <p>The "Gi" is the traditional uniform, similar to a judo suit. We have spare Gis you can borrow for your first few sessions, so you don't need to buy one straight away. Wear something light underneath, like a t-shirt or rash guard.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="content-section">
+                <h2>Answering Your Concerns</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>"Do I need to be fit to start?"</h3>
+                        <p>Absolutely not. Jiu-Jitsu is for everyone, regardless of your current fitness level. In fact, training BJJ is a fantastic way to improve your fitness. You go at your own pace, and your stamina and strength will build up naturally over time.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>"Is BJJ safe?"</h3>
+                        <p>Yes. While it's a contact sport, safety is our number one rule. Training is done in a controlled environment under the supervision of an experienced black belt. We focus on technique over strength, and you can "tap out" at any time if you feel uncomfortable, which immediately stops the action.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>"Am I too old to start?"</h3>
+                        <p>You're never too old to start learning. BJJ is known as the "gentle art" because it relies on leverage and technique, making it accessible for people of all ages and sizes. Our community includes members from various age groups.</p>
+                    </div>
+                     <div class="faq-item">
+                        <h3>"What if I don't know anyone?"</h3>
+                        <p>You'll fit right in. We are a friendly and welcoming community. From the moment you step on the mat, you'll be part of the team. We all help each other learn and improve.</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Give It a Go?</h2>
+            <p>Your first session at Diss BJJ is completely free. There's no obligation and no pressure. It's the perfect way to see if BJJ is right for you.</p>
+            <a href="index.html#schedule" class="btn">Book Your Free Taster Session</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3>DISS BJJ</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/DissBJJ" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/diss.bjj/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@grapplingcommunity2606" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="copyright">&copy; 2025 Grappling Community Ltd / Let's Train - Diss BJJ. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
