@@ -4,780 +4,249 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DISS BJJ | Brazilian Jiu-Jitsu | Diss, Norfolk</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Diss BJJ — Brazilian Jiu-Jitsu in Diss, Norfolk. Friendly classes for all levels with BJJ black belt Alec Gayson. Free taster session available.">
+    <link rel="canonical" href="https://example.com/">
+    <meta property="og:title" content="DISS BJJ | Brazilian Jiu-Jitsu | Diss, Norfolk">
+    <meta property="og:description" content="Friendly classes for all levels with BJJ black belt Alec Gayson. Free taster session available.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="instructor.jpg">
+    <meta property="og:site_name" content="DISS BJJ">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Preconnects (faster fonts/icons) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- (kept) Font Awesome + Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <script data-goatcounter="https://bengouldingdev.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+
+    <!-- (kept) GoatCounter -->
+    <script data-goatcounter="https://bengouldingdev.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
     <style>
-        :root {
-            --black: #000000;
-            --white: #ffffff;
-            --light-gray: #f5f5f5;
-            --medium-gray: #e0e0e0;
-            --dark-gray: #333333;
-            --warning-yellow-bg: #fff3cd;
-            --warning-yellow-border: #ffeeba;
-            --warning-yellow-accent: #ffc107;
-            --warning-yellow-text: #856404;
+        :root{
+            --black:#000;--white:#fff;--light-gray:#f5f5f5;--medium-gray:#e0e0e0;--dark-gray:#333;
+            --warning-yellow-bg:#fff3cd;--warning-yellow-border:#ffeeba;--warning-yellow-accent:#ffc107;--warning-yellow-text:#856404;
+            --header-height:72px;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Open Sans', sans-serif;
-            line-height: 1.6;
-            color: var(--dark-gray);
-            background-color: var(--white);
-            overflow-x: hidden;
-        }
-        
-        h1, h2, h3, h4, h5 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            color: var(--black);
-            margin-bottom: 1rem;
-            letter-spacing: -0.5px;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        /* Header Styles */
-        header {
-            background-color: transparent;
-            padding: 1.5rem 0;
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.4s ease;
-        }
-        
-        header.scrolled {
-            background-color: var(--white);
-            padding: 1rem 0;
-            box-shadow: 0 1px 10px rgba(0,0,0,0.05);
-            border-bottom: 1px solid var(--medium-gray);
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo h1 {
-            font-size: 1.8rem;
-            margin-bottom: 0;
-            font-weight: 700;
-            color: var(--white);
-        }
-        
-        header.scrolled .logo h1 {
-            color: var(--black);
-        }
-        
-        .logo span {
-            font-weight: 300;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 2rem;
-        }
-        
-        nav ul li a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            position: relative;
-            font-size: 1rem;
-        }
-        
-        header.scrolled nav ul li a {
-            color: var(--black);
-        }
-        
-        nav ul li a:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--white);
-            transition: width 0.3s;
-        }
-        
-        header.scrolled nav ul li a:after {
-            background: var(--black);
-        }
-        
-        nav ul li a:hover:after {
-            width: 100%;
-        }
-        
-        /* Hero Section with Image and Overlay */
-        .hero {
-            background: 
-                linear-gradient(rgba(0, 0, 0, 0.4), 
-                rgba(0, 0, 0, 0.4)), 
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:'Open Sans',sans-serif;line-height:1.6;color:var(--dark-gray);background-color:var(--white);overflow-x:hidden}
+        h1,h2,h3,h4,h5{font-family:'Montserrat',sans-serif;font-weight:600;color:var(--black);margin-bottom:1rem;letter-spacing:-.5px}
+        a:focus,button:focus{outline:2px solid #000;outline-offset:2px}
+
+        .container{width:90%;max-width:1200px;margin:0 auto}
+
+        /* Skip link */
+        .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+        .skip-link:focus{left:1rem;top:1rem;width:auto;height:auto;background:#000;color:#fff;padding:.5rem .75rem;z-index:2000}
+
+        /* Header */
+        header{background:transparent;padding:1.5rem 0;position:fixed;width:100%;z-index:1000;transition:all .4s ease}
+        header.scrolled{background:var(--white);padding:1rem 0;box-shadow:0 1px 10px rgba(0,0,0,.05);border-bottom:1px solid var(--medium-gray)}
+        .header-container{display:flex;justify-content:space-between;align-items:center}
+        .logo{display:flex;align-items:center}
+        .logo h1{font-size:1.8rem;margin-bottom:0;font-weight:700;color:var(--white)}
+        header.scrolled .logo h1{color:var(--black)}
+        .logo span{font-weight:300}
+        nav ul{display:flex;list-style:none}
+        nav ul li{margin-left:2rem}
+        nav ul li a{color:var(--white);text-decoration:none;font-weight:500;transition:all .3s;position:relative;font-size:1rem}
+        header.scrolled nav ul li a{color:var(--black)}
+        nav ul li a:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:1px;background:var(--white);transition:width .3s}
+        header.scrolled nav ul li a:after{background:var(--black)}
+        nav ul li a:hover:after{width:100%}
+
+        /* Hero */
+        .hero{
+            background:
+                linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),
                 url('instructor.jpg') no-repeat center center/cover;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            position: relative;
+            height:100vh;display:flex;align-items:center;text-align:center;position:relative
         }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-            z-index: 2;
-            width: 100%;
-        }
-        
-        .hero h2 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            color: var(--white);
-            animation: fadeInUp 1s ease;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            color: var(--light-gray);
-            animation: fadeInUp 1.2s ease;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: transparent;
-            color: var(--white);
-            padding: 12px 30px;
-            border-radius: 0;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: 1px solid var(--white);
-            margin: 5px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            animation: fadeInUp 1.4s ease;
-        }
-        
-        .btn:hover {
-            background: var(--white);
-            color: var(--black);
-        }
+        .hero-content{max-width:800px;margin:0 auto;padding:0 20px;z-index:2;width:100%}
+        .hero h2{font-size:3.5rem;margin-bottom:1.5rem;line-height:1.2;color:var(--white);animation:fadeInUp 1s ease}
+        .hero p{font-size:1.2rem;margin-bottom:2rem;max-width:600px;margin-left:auto;margin-right:auto;color:var(--light-gray);animation:fadeInUp 1.2s ease}
+        .btn{display:inline-block;background:transparent;color:var(--white);padding:12px 30px;border-radius:0;text-decoration:none;font-weight:600;transition:all .3s;border:1px solid var(--white);margin:5px;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;animation:fadeInUp 1.4s ease}
+        .btn:hover{background:var(--white);color:var(--black)}
+        .btn.dark{color:var(--black);border-color:var(--black)}
+        .btn.dark:hover{background:var(--black);color:var(--white)}
 
-        .btn.dark {
-            color: var(--black);
-            border-color: var(--black);
-        }
+        /* Section base + anchor offset */
+        section{padding:6rem 0;border-bottom:1px solid var(--medium-gray);scroll-margin-top:calc(var(--header-height) + 16px)}
+        .section-title{text-align:center;margin-bottom:3rem}
+        .section-title h2{font-size:2.5rem;position:relative;display:inline-block}
+        .section-title h2:after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:80px;height:2px;background:var(--black)}
 
-        .btn.dark:hover {
-            background: var(--black);
-            color: var(--white);
-        }
-        
-        /* Sections */
-        section {
-            padding: 6rem 0;
-            border-bottom: 1px solid var(--medium-gray);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 2px;
-            background: var(--black);
-        }
-        
-        /* About Section */
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-text p {
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-        
-        .about-image {
-            flex: 1;
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        
-        /* Schedule Section */
-        .schedule {
-            background-color: var(--light-gray);
-            border-bottom: 1px solid var(--medium-gray);
-        }
+        /* About */
+        .about-content{display:flex;align-items:center;gap:4rem}
+        .about-text{flex:1}
+        .about-text p{margin-bottom:1.5rem;line-height:1.8}
+        .about-image{flex:1}
+        .about-image img{width:100%;height:auto;display:block;box-shadow:0 20px 40px rgba(0,0,0,.1)}
 
-        /* --- Form Intro Box --- */
-        .form-intro {
-            max-width: 700px;
-            margin: 0 auto 2rem auto;
-            padding: 2rem;
-            background: var(--white);
-            border: 1px solid var(--medium-gray);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-        .form-intro h3 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-        }
-        .form-intro p {
-            font-size: 1.1rem;
-            margin-bottom: 0;
-        }
+        /* Schedule */
+        .schedule{background-color:var(--light-gray);border-bottom:1px solid var(--medium-gray)}
+        .form-intro{max-width:700px;margin:0 auto 2rem;padding:2rem;background:var(--white);border:1px solid var(--medium-gray);box-shadow:0 10px 30px rgba(0,0,0,.05);text-align:center}
+        .form-intro h3{font-size:1.8rem;margin-bottom:.5rem}
+        .form-intro p{font-size:1.1rem;margin-bottom:0}
+        .form-wrapper{max-width:700px;margin:0 auto 5rem;height:511px}
+        .schedule-table-wrapper{max-width:700px;margin:0 auto;overflow-x:auto;box-shadow:0 10px 30px rgba(0,0,0,.05);background:var(--white)}
+        .schedule-table{width:100%;border-collapse:collapse}
+        .schedule-table th{background-color:var(--black);color:var(--white);padding:15px;text-align:left;font-weight:500;border-bottom:1px solid var(--black)}
+        .schedule-table td{padding:15px;border-bottom:1px solid var(--medium-gray)}
+        .schedule-table tr:last-child td{border-bottom:none}
+        .costing-info{max-width:700px;margin:2rem auto 0;padding:2rem;background:var(--white);border:1px solid var(--medium-gray);text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.05)}
+        .costing-info h3{margin:0 0 1rem;font-size:1.5rem;color:var(--black)}
+        .costing-info p{margin-bottom:.5rem;color:var(--dark-gray);font-size:1.1rem}
+        .costing-info .payment-methods{font-size:.9rem;font-style:italic;color:#555;margin-top:1rem}
+        .training-notice{max-width:700px;margin:2rem auto 0;padding:1.5rem 2rem;background-color:var(--warning-yellow-bg);border:1px solid var(--warning-yellow-border);border-left:5px solid var(--warning-yellow-accent);text-align:left}
+        .training-notice h3{margin:0 0 1rem;color:var(--warning-yellow-text);font-size:1.5rem}
+        .training-notice p{margin-bottom:.5rem;color:var(--dark-gray)}
+        .training-notice ul{list-style-type:none;margin-bottom:1rem;padding-left:0}
+        .training-notice li{margin-bottom:.5rem;position:relative;padding-left:25px}
+        .training-notice li::before{content:'\f071';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;left:0;top:2px;color:var(--warning-yellow-accent)}
+        .training-notice .tbc-notice{margin-top:1.5rem;font-style:italic}
 
-        /* Wrapper for the schedule table to handle responsiveness */
-        .schedule-table-wrapper {
-            max-width: 700px;
-            margin: 0 auto;
-            overflow-x: auto; /* Makes it scrollable on small screens */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            background: var(--white);
-        }
-        
-        .schedule-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .schedule-table th {
-            background-color: var(--black);
-            color: var(--white);
-            padding: 15px;
-            text-align: left;
-            font-weight: 500;
-            border-bottom: 1px solid var(--black);
-        }
-        
-        .schedule-table td {
-            padding: 15px;
-            border-bottom: 1px solid var(--medium-gray);
-        }
-        
-        .schedule-table tr:last-child td {
-            border-bottom: none;
-        }
+        /* Reviews */
+        #reviews{background-color:var(--white)}
+        .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+        .review-card{background:var(--light-gray);padding:2.5rem 2rem 2rem;border:1px solid var(--medium-gray);position:relative;display:flex;flex-direction:column}
+        .review-card .fa-quote-left{position:absolute;top:1rem;left:1rem;font-size:1.5rem;color:var(--medium-gray)}
+        .review-text{flex-grow:1;font-style:italic;margin-bottom:1.5rem;color:#555}
+        .review-activity-image{width:100%;height:auto;margin:1.5rem 0;display:block;border:1px solid var(--medium-gray)}
+        .review-author{text-align:right}
+        .author-name{font-weight:700;font-family:'Montserrat',sans-serif;margin-bottom:.25rem}
+        .author-capacity{font-size:.9rem;color:var(--dark-gray)}
 
-        /* --- Costing Info Section --- */
-        .costing-info {
-            max-width: 700px;
-            margin: 2rem auto 0;
-            padding: 2rem;
-            background-color: var(--white);
-            border: 1px solid var(--medium-gray);
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-        .costing-info h3 {
-            margin-top: 0;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-            color: var(--black);
-        }
-        .costing-info p {
-            margin-bottom: 0.5rem;
-            color: var(--dark-gray);
-            font-size: 1.1rem;
-        }
-        .costing-info .payment-methods {
-            font-size: 0.9rem;
-            font-style: italic;
-            color: #555;
-            margin-top: 1rem;
-        }
+        /* YouTube */
+        .youtube-section{background-color:var(--white)}
+        .video-container{max-width:800px;margin:0 auto;position:relative;padding-bottom:56.25%;height:0;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.1)}
+        .video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
 
-        /* --- Training Dates Notice --- */
-        .training-notice {
-            max-width: 700px;
-            margin: 2rem auto 0;
-            padding: 1.5rem 2rem;
-            background-color: var(--warning-yellow-bg);
-            border: 1px solid var(--warning-yellow-border);
-            border-left: 5px solid var(--warning-yellow-accent);
-            text-align: left;
-        }
-        .training-notice h3 {
-            margin-top: 0;
-            margin-bottom: 1rem;
-            color: var(--warning-yellow-text);
-            font-size: 1.5rem;
-        }
-        .training-notice p {
-            margin-bottom: 0.5rem;
-            color: var(--dark-gray);
-        }
-        .training-notice ul {
-            list-style-type: none;
-            margin-bottom: 1rem;
-            padding-left: 0;
-        }
-        .training-notice li {
-            margin-bottom: 0.5rem;
-            position: relative;
-            padding-left: 25px;
-        }
-        .training-notice li::before {
-            content: '\f071'; /* Font Awesome Exclamation Triangle */
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            top: 2px;
-            color: var(--warning-yellow-accent);
-        }
-        .training-notice .tbc-notice {
-            margin-top: 1.5rem;
-            font-style: italic;
-        }
+        .video-info{text-align:center;margin-top:2rem}
+        .video-info h3{margin-bottom:1rem}
+        .video-info a{color:var(--dark-gray);text-decoration:none;border-bottom:1px solid var(--dark-gray);transition:all .3s}
+        .video-info a:hover{color:var(--black);border-bottom:1px solid var(--black)}
 
-        /* Review Section */
-        #reviews {
-            background-color: var(--white);
-        }
+        /* Contact */
+        .contact-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;max-width:900px;margin:0 auto}
+        .contact-info{padding:2rem;border:1px solid var(--medium-gray)}
+        .contact-info h3{margin-bottom:1.5rem;text-align:center}
+        .contact-item{display:flex;margin-bottom:1.5rem}
+        .contact-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;margin-right:1rem;flex-shrink:0;border:1px solid var(--black)}
+        .contact-text h4{margin-bottom:.3rem;font-weight:600}
+        .contact-text p,.contact-text a{color:var(--dark-gray);text-decoration:none;transition:color .3s}
+        .contact-text a:hover{color:var(--black)}
 
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .review-card {
-            background: var(--light-gray);
-            padding: 2.5rem 2rem 2rem;
-            border: 1px solid var(--medium-gray);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .review-card .fa-quote-left {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            font-size: 1.5rem;
-            color: var(--medium-gray);
-        }
-        
-        .review-text {
-            flex-grow: 1;
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            color: #555;
-        }
-        
-        .review-activity-image {
-            width: 100%;
-            height: auto;
-            margin-top: 1.5rem;
-            margin-bottom: 1.5rem;
-            display: block;
-            border: 1px solid var(--medium-gray);
-        }
-
-        .review-author {
-            text-align: right;
-        }
-
-        .author-name {
-            font-weight: 700;
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 0.25rem;
-        }
-
-        .author-capacity {
-            font-size: 0.9rem;
-            color: var(--dark-gray);
-        }
-        /* YouTube Section */
-        .youtube-section {
-            background-color: var(--white);
-        }
-        
-        .video-container {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .video-info {
-            text-align: center;
-            margin-top: 2rem;
-        }
-        
-        .video-info h3 {
-            margin-bottom: 1rem;
-        }
-        
-        .video-info a {
-            color: var(--dark-gray);
-            text-decoration: none;
-            border-bottom: 1px solid var(--dark-gray);
-            transition: all 0.3s;
-        }
-        
-        .video-info a:hover {
-            color: var(--black);
-            border-bottom: 1px solid var(--black);
-        }
-        
-        /* Contact Section */
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .contact-info {
-            padding: 2rem;
-            border: 1px solid var(--medium-gray);
-        }
-        
-        .contact-info h3 {
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        
-        .contact-item {
-            display: flex;
-            margin-bottom: 1.5rem;
-        }
-        
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            flex-shrink: 0;
-            border: 1px solid var(--black);
-        }
-        
-        .contact-text h4 {
-            margin-bottom: 0.3rem;
-            font-weight: 600;
-        }
-        
-        .contact-text p, .contact-text a {
-            color: var(--dark-gray);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .contact-text a:hover {
-            color: var(--black);
-        }
-        
         /* Map */
-        .map-container {
-            height: 300px;
-            border: 1px solid var(--medium-gray);
-        }
-        
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
+        .map-container{height:300px;border:1px solid var(--medium-gray)}
+        .map-container iframe{width:100%;height:100%;border:none}
+
         /* Footer */
-        footer {
-            background: var(--white);
-            color: var(--dark-gray);
-            padding: 3rem 0 2rem;
-            text-align: center;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .social-icons {
-            margin: 1.5rem 0;
-        }
-        
-        .social-icons a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--black);
-            border-radius: 0;
-            color: var(--black);
-            margin: 0 0.5rem;
-            transition: all 0.3s;
-        }
-        
-        .social-icons a:hover {
-            background: var(--black);
-            color: var(--white);
-        }
-        
-        .copyright {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-        }
-        
-        /* --- Incentive Modal Styles --- */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
-        }
+        footer{background:var(--white);color:var(--dark-gray);padding:3rem 0 2rem;text-align:center}
+        .footer-content{display:flex;flex-direction:column;align-items:center}
+        .social-icons{margin:1.5rem 0}
+        .social-icons a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--black);border-radius:0;color:var(--black);margin:0 .5rem;transition:all .3s}
+        .social-icons a:hover{background:var(--black);color:var(--white)}
+        .copyright{margin-top:1rem;font-size:.9rem}
 
-        .modal-overlay.show {
-            opacity: 1;
-            visibility: visible;
-        }
+        /* Modal */
+        .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:2000;display:flex;justify-content:center;align-items:center;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease}
+        .modal-overlay.show{opacity:1;visibility:visible}
+        .modal-content{background:var(--white);padding:3rem;width:90%;max-width:500px;text-align:center;position:relative;box-shadow:0 10px 30px rgba(0,0,0,.2);transform:translateY(-30px);transition:transform .4s ease}
+        .modal-overlay.show .modal-content{transform:translateY(0)}
+        .modal-close-btn{position:absolute;top:10px;right:15px;font-size:2rem;color:var(--medium-gray);cursor:pointer;transition:color .3s ease}
+        .modal-close-btn:hover{color:var(--dark-gray)}
+        .modal-content h2{font-size:2rem;color:var(--black);margin-bottom:1.5rem}
+        .modal-content p{margin-bottom:1.5rem;font-size:1.1rem;line-height:1.7}
+        .modal-content p strong{font-weight:600;color:var(--black)}
 
-        .modal-content {
-            background: var(--white);
-            padding: 3rem;
-            width: 90%;
-            max-width: 500px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transform: translateY(-30px);
-            transition: transform 0.4s ease;
-        }
-
-        .modal-overlay.show .modal-content {
-            transform: translateY(0);
-        }
-
-        .modal-close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 2rem;
-            color: var(--medium-gray);
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .modal-close-btn:hover {
-            color: var(--dark-gray);
-        }
-
-        .modal-content h2 {
-            font-size: 2rem;
-            color: var(--black);
-            margin-bottom: 1.5rem;
-        }
-        
-        .modal-content p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-
-        .modal-content p strong {
-            font-weight: 600;
-            color: var(--black);
-        }
-        
         /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            /* Tablet adjustments */
-            .hero h2 {
-                font-size: 3rem;
-            }
-            
-            .hero-content {
-                padding-top: 40px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 2.5rem;
-            }
-            
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul {
-                margin-top: 1rem;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            
-            nav ul li {
-                margin: 0.5rem 1rem;
-            }
-            
-            .btn {
-                display: block;
-                margin: 10px auto;
-                max-width: 250px;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            /* Adjust hero for mobile */
-            .hero {
-                background-position: 45% center;
-                /* Push content down for mobile */
-                padding-top: 200px;
-                align-items: flex-start;
-            }
-            
-            .hero-content {
-                padding-top: 40px;
-            }
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 
-            .modal-content {
-                padding: 2.5rem 1.5rem;
-            }
-            .modal-content h2 {
-                font-size: 1.8rem;
-            }
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce){
+            *{animation:none !important;transition:none !important;scroll-behavior:auto}
         }
-        
-        @media (max-width: 480px) {
-            .hero {
-                background: 
-                    linear-gradient(rgba(0, 0, 0, 0.5), 
-                    rgba(0, 0, 0, 0.5)), 
+
+        /* Responsive */
+        @media (max-width:1024px){
+            .hero h2{font-size:3rem}
+            .hero-content{padding-top:40px}
+        }
+        @media (max-width:768px){
+            .hero h2{font-size:2.5rem}
+            .about-content{flex-direction:column}
+            .header-container{flex-direction:column;text-align:center}
+            nav ul{margin-top:1rem;justify-content:center;flex-wrap:wrap}
+            nav ul li{margin:.5rem 1rem}
+            .btn{display:block;margin:10px auto;max-width:250px}
+            .section-title h2{font-size:2rem}
+            .hero{background-position:45% center;padding-top:200px;align-items:flex-start}
+            .hero-content{padding-top:40px}
+            .modal-content{padding:2.5rem 1.5rem}
+            .modal-content h2{font-size:1.8rem}
+        }
+        @media (max-width:480px){
+            .hero{
+                background:
+                    linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
                     url('mobilehero.jpg') no-repeat center center/cover;
-                padding-top: 180px;
+                padding-top:180px
             }
-            
-            .hero h2 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            nav ul li {
-                margin: 0.3rem 0.8rem;
-            }
-            
-            .hero-content {
-                padding-top: 20px;
-            }
+            .hero h2{font-size:2rem}
+            .hero p{font-size:1rem}
+            nav ul li{margin:.3rem .8rem}
+            .hero-content{padding-top:20px}
         }
+
+        /* Back to top */
+        .to-top{position:fixed;right:1rem;bottom:1rem;z-index:1500;display:none}
+        .to-top.show{display:inline-flex}
     </style>
+
+    <!-- JSON-LD: local sports club -->
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"SportsActivityLocation",
+      "name":"DISS BJJ",
+      "description":"Brazilian Jiu-Jitsu & grappling classes in Diss, Norfolk.",
+      "address":{
+        "@type":"PostalAddress",
+        "streetAddress":"Walcot Road",
+        "addressLocality":"Diss",
+        "postalCode":"IP22 4DB",
+        "addressRegion":"Norfolk",
+        "addressCountry":"GB"
+      },
+      "email":"letstrain@grapplingcommunity.com",
+      "url":"https://example.com/",
+      "geo":{"@type":"GeoCoordinates","latitude":52.3805938,"longitude":1.1159109},
+      "sameAs":[
+        "https://www.facebook.com/DissBJJ",
+        "https://www.instagram.com/diss.bjj/",
+        "https://www.youtube.com/@grapplingcommunity2606"
+      ]
+    }
+    </script>
 </head>
 <body>
+    <a href="#home" class="skip-link">Skip to content</a>
+
     <!-- Header -->
     <header id="main-header">
-        <div class="container header-container">
+        <div class="container header-container" role="navigation" aria-label="Primary">
             <div class="logo">
                 <h1>DISS <span>BJJ</span> <span>- #LetsTrain</span></h1>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#home">Home</a></li>
+                    <li><a href="#home" aria-current="page">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#schedule">Schedule</a></li>
                     <li><a href="#reviews">Reviews</a></li>
@@ -788,8 +257,8 @@
         </div>
     </header>
 
-    <!-- Hero Section with Image and Overlay -->
-    <section class="hero" id="home">
+    <!-- Hero -->
+    <section class="hero" id="home" role="banner" aria-label="Hero">
         <div class="container hero-content">
             <h2>Brazilian Jiu-Jitsu in Diss</h2>
             <p>Learn self-defense, improve fitness, and become part of our growing #grapplingcommunity.</p>
@@ -800,11 +269,11 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
+    <!-- About -->
+    <section id="about" aria-labelledby="about-heading">
         <div class="container">
             <div class="section-title">
-                <h2>About Our Club</h2>
+                <h2 id="about-heading">About Our Club</h2>
             </div>
             <div class="about-content">
                 <div class="about-text">
@@ -816,57 +285,55 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="dissgi.jpg" alt="BJJ Training"  onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/333333?text=Training+Image';">
+                    <img src="dissgi.jpg" alt="BJJ Training" loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/333333?text=Training+Image';">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Schedule Section -->
-    <section class="schedule" id="schedule">
+    <!-- Schedule -->
+    <section class="schedule" id="schedule" aria-labelledby="schedule-heading">
         <div class="container">
 
-            <!-- Form Intro -->
             <div class="form-intro">
                 <h3>Interested in a free taster session?</h3>
                 <p>Let us know here…</p>
             </div>
 
-            <!-- Form Embed -->
-            <div class="form-wrapper" style="max-width: 700px; margin: 0 auto 5rem auto; height: 511px;">
+            <!-- (kept) Form Embed -->
+            <div class="form-wrapper" style="height: 511px;">
                 <iframe
                     src="https://link.saleshero.uk/widget/form/j3HFCtTUuJP3HEDCjIHw"
                     style="width:100%;height:100%;border:none;border-radius:3px"
                     id="inline-j3HFCtTUuJP3HEDCjIHw" 
                     data-layout="{'id':'INLINE'}"
                     data-trigger-type="alwaysShow"
-                    data-trigger-value=""
                     data-activation-type="alwaysActivated"
-                    data-activation-value=""
                     data-deactivation-type="neverDeactivate"
-                    data-deactivation-value=""
                     data-form-name="Website Contact Form"
                     data-height="511"
                     data-layout-iframe-id="inline-j3HFCtTUuJP3HEDCjIHw"
                     data-form-id="j3HFCtTUuJP3HEDCjIHw"
                     title="Website Contact Form"
-                        >
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
-                <script src="https://link.saleshero.uk/js/form_embed.js"></script>
+                <script src="https://link.saleshero.uk/js/form_embed.js" defer></script>
             </div>
 
             <div class="section-title">
-                <h2>Class Schedule</h2>
+                <h2 id="schedule-heading">Class Schedule</h2>
             </div>
-            <!-- START: Table Wrapper for responsiveness -->
-            <div class="schedule-table-wrapper">
+
+            <div class="schedule-table-wrapper" role="region" aria-label="Weekly schedule">
                 <table class="schedule-table">
                     <thead>
                         <tr>
-                            <th>Day</th>
-                            <th>Class</th>
-                            <th>Time</th>
-                            <th>Instructor</th>
+                            <th scope="col">Day</th>
+                            <th scope="col">Class</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Instructor</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -885,28 +352,14 @@
                     </tbody>
                 </table>
             </div>
-            <!-- END: Table Wrapper -->
-            
-            <!-- START: Costing Info -->
+
             <div class="costing-info">
                 <h3>Pricing</h3>
                 <p>Currently operating a simple pay as you train routine for just <strong>£8 per class.</strong></p>
                 <p class="payment-methods">Card or cash accepted (no change available).</p>
             </div>
-            <!-- END: Costing Info -->
 
-            <!-- START: Training Dates Notice (REMOVED) -->
-            <!--
-            <div class="training-notice">
-                <h3>Important Training Updates</h3>
-                <p><strong>Please note, there will be NO training on the following dates:</strong></p>
-                <ul>
-                    <li>Friday 17th & Saturday 18th October</li>
-                    <li>Friday 24th & Saturday 25th October</li>
-                </ul>
-            </div>
-            -->
-            <!-- END: Training Dates Notice -->
+            <!-- (kept comment block for training notice) -->
 
             <div style="text-align: center; margin-top: 2rem;">
                 <p><strong>Location:</strong> Heywood Sports & Fitness, Walcot Road, Diss, Norfolk, IP22 4DB</p>
@@ -914,34 +367,31 @@
         </div>
     </section>
 
-    <!-- Reviews Section -->
-    <section id="reviews">
+    <!-- Reviews -->
+    <section id="reviews" aria-labelledby="reviews-heading">
         <div class="container">
             <div class="section-title">
-                <h2>From Our Community</h2>
+                <h2 id="reviews-heading">From Our Community</h2>
             </div>
             <div class="reviews-grid">
-                <!-- Review 1 -->
                 <div class="review-card">
-                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-left" aria-hidden="true"></i>
                     <p class="review-text">A fantastic BJJ coach with a true passion for the sport coupled with some high level, technical knowledge. Excellent, detailed instruction and a friendly face at every class.</p>
                     <div class="review-author">
                         <p class="author-name">Patrick O’Hagan</p>
                         <p class="author-capacity"><strong>Focus:</strong> BJJ</p>
                     </div>
                 </div>
-                <!-- Review 2 -->
                 <div class="review-card">
-                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-left" aria-hidden="true"></i>
                     <p class="review-text">Al was my rugby physio at Withycombe rugby club for a couple of seasons. His knowledge surrounding conditioning training and also the rehab side was impeccable. The team appreciated having him pitch side to deal with our knocks in the pitch.</p>
                     <div class="review-author">
                         <p class="author-name">Joe Staley </p>
                         <p class="author-capacity"><strong>Focus:</strong> Rehab</p>
                     </div>
                 </div>
-                <!-- Review 3 -->
                 <div class="review-card">
-                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-left" aria-hidden="true"></i>
                     <p class="review-text">Al has always been a superb coach. Very informative and accommodating, he creates and sustains a terrific learning environment for all levels. Always a pleasure!</p>
                     <div class="review-author">
                         <p class="author-name">Lewis P.</p>
@@ -950,42 +400,44 @@
                 </div>
             </div>
             <div style="text-align: center; margin-top: 3rem;">
-                <a href="reviews.html" class="btn dark">See All Reviews</a>
+                <a href="reviews.html" class="btn dark" target="_blank" rel="noopener">See All Reviews</a>
             </div>
         </div>
     </section>
 
-    <!-- YouTube Section -->
-    <section id="youtube" class="youtube-section">
+    <!-- YouTube -->
+    <section id="youtube" class="youtube-section" aria-labelledby="youtube-heading">
         <div class="container">
             <div class="section-title">
-                <h2>Latest from DISS BJJ</h2>
+                <h2 id="youtube-heading">Latest from DISS BJJ</h2>
             </div>
             <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/hSez7G7tOIs?si=C3qrZ9NbbAGzolGq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/hSez7G7tOIs?si=C3qrZ9NbbAGzolGq"
+                        title="Instructional video from DISS BJJ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
             <div class="video-info">
                 <h3>Instructionals</h3>
                 <p>Watch our most recent instructionals</p>
-                <a href="https://www.youtube.com/@grapplingcommunity2606" target="_blank">
+                <a href="https://www.youtube.com/@grapplingcommunity2606" target="_blank" rel="noopener">
                     Visit Our YouTube Channel
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
+    <!-- Contact -->
+    <section id="contact" aria-labelledby="contact-heading">
         <div class="container">
             <div class="section-title">
-                <h2>Contact Us</h2>
+                <h2 id="contact-heading">Contact Us</h2>
             </div>
             <div class="contact-container">
-                <div class="contact-info">
+                <div class="contact-info" aria-label="Contact details">
                     <h3>Get In Touch</h3>
                     
                     <div class="contact-item">
-                        <div class="contact-icon">
+                        <div class="contact-icon" aria-hidden="true">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div class="contact-text">
@@ -995,7 +447,7 @@
                     </div>
                     
                     <div class="contact-item">
-                        <div class="contact-icon">
+                        <div class="contact-icon" aria-hidden="true">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div class="contact-text">
@@ -1006,11 +458,13 @@
                 </div>
                 
                 <div>
-                    <div class="map-container">
-                       <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4870.877763418926!2d1.1159109!3d52.3805938!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d9c0f2691c3dbd%3A0x753ef974239f9ed1!2sHeywood%20Sports%20%26%20Fitness!5e0!3m2!1sen!2suk!4v1749076370732!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="map-container" role="region" aria-label="Map to Heywood Sports & Fitness">
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4870.877763418926!2d1.1159109!3d52.3805938!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d9c0f2691c3dbd%3A0x753ef974239f9ed1!2sHeywood%20Sports%20%26%20Fitness!5e0!3m2!1sen!2suk!4v1749076370732!5m2!1sen!2suk"
+                               width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                               referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     <div style="margin-top: 1.5rem; text-align: center;">
-                        <a href="https://maps.app.goo.gl/87PsUWV1NoyhC6Gs7" class="btn dark" target="_blank">Get Directions</a>
+                        <a href="https://maps.app.goo.gl/87PsUWV1NoyhC6Gs7" class="btn dark" target="_blank" rel="noopener">Get Directions</a>
                     </div>
                 </div>
             </div>
@@ -1018,144 +472,109 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <h3>DISS BJJ</h3>
                 <p>Brazilian Jiu-Jitsu Community in Diss, Norfolk</p>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/DissBJJ" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/diss.bjj/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@grapplingcommunity2606" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/DissBJJ" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/diss.bjj/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@grapplingcommunity2606" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
                 <p class="copyright">&copy; 2025 Grappling Community Ltd / Let's Train - Diss BJJ. All rights reserved.</p>
             </div>
         </div>
     </footer>
     
-    <!-- Incentive Modal -->
-    <div id="incentive-modal" class="modal-overlay">
+    <!-- Incentive Modal (kept) -->
+    <div id="incentive-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-content">
-            <span class="modal-close-btn">&times;</span>
-            <h2>Try Your First Session For FREE!</h2>
+            <span class="modal-close-btn" role="button" aria-label="Close dialog">&times;</span>
+            <h2 id="modal-title">Try Your First Session For FREE!</h2>
             <p>New to BJJ? Or just new to Diss BJJ? Come and try your first session on us. No obligations, just pure grappling.</p>
             <p><strong>Experience BJJ, meet our community!</strong></p>
             <a href="#schedule" class="btn dark modal-link">Book Your Free Session</a>
         </div>
     </div>
 
+    <!-- Back to top -->
+    <a href="#home" class="btn dark to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-
-        // --- Header scroll effect ---
+    document.addEventListener('DOMContentLoaded', function () {
+        // Header scroll effect + back-to-top toggle
         const header = document.getElementById('main-header');
-        const handleScroll = () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+        const toTop = document.querySelector('.to-top');
+        const onScroll = () => {
+            const scrolled = window.scrollY > 50;
+            header.classList.toggle('scrolled', scrolled);
+            toTop.classList.toggle('show', window.scrollY > 500);
         };
-        window.addEventListener('scroll', handleScroll);
-        handleScroll(); // Initial check on load
+        window.addEventListener('scroll', onScroll);
+        onScroll();
 
-        // --- Smooth scrolling for anchor links ---
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                // Exclude modal links from this behavior to allow the modal to close properly
-                if (this.classList.contains('modal-link')) {
-                    // Prevent default scrolling for modal link only if it's handled by smooth scroll logic
-                    // The smooth scroll for the modal link will be handled separately below
-                    // This ensures the modal closes AND the page scrolls
-                    e.preventDefault(); 
-                }
-                
-                const targetId = this.getAttribute('href');
-                const target = document.querySelector(targetId);
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80, // Adjust for fixed header height
-                        behavior: 'smooth'
-                    });
-                }
+        // Reveal sections on view (reduced motion safe)
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!reduceMotion) {
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('section').forEach(section => {
+                section.style.opacity = 0;
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity .6s ease-out, transform .6s ease-out';
+                observer.observe(section);
             });
-        });
-        
-        // --- Animate sections on scroll ---
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target); // Animate only once
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-        
-        document.querySelectorAll('section').forEach(section => {
-            section.style.opacity = 0;
-            section.style.transform = 'translateY(20px)';
-            section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-            observer.observe(section);
-        });
-        
-        // --- Incentive Modal Logic ---
+        }
+
+        // Incentive Modal
         const modal = document.getElementById('incentive-modal');
-        const closeModalBtn = document.querySelector('.modal-close-btn');
-        const modalLink = document.querySelector('.modal-link'); // Get the new modal link
+        const closeBtn = document.querySelector('.modal-close-btn');
+        const modalLink = document.querySelector('.modal-link');
 
-        const showModal = () => {
-            modal.classList.add('show');
-        };
-
+        const showModal = () => modal.classList.add('show');
         const closeModal = () => {
             modal.classList.remove('show');
-            // Use sessionStorage to only show the modal once per browser session
-            sessionStorage.setItem('dissBjjFreeTasterClosed', 'true'); // Changed key name
+            sessionStorage.setItem('dissBjjFreeTasterClosed', 'true');
         };
 
-        // Check if the modal should be shown (always show if not closed in session)
-        const shouldShowModal = () => {
-            // Check if user has already closed it this session
-            if (sessionStorage.getItem('dissBjjFreeTasterClosed')) {
-                return false;
-            }
-            return true; // Always show the free taster session modal if not closed
-        };
-        
-        if (modal && shouldShowModal()) {
-            // Show modal after a short delay to not be too intrusive
+        const shouldShow = () => !sessionStorage.getItem('dissBjjFreeTasterClosed');
+
+        if (modal && shouldShow()) {
             setTimeout(showModal, 1500);
         }
 
-        // Event listeners for closing the modal
         if (modal) {
-            closeModalBtn.addEventListener('click', closeModal);
-            // Modified modalLink click to close modal and then scroll to form
-            modalLink.addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent default anchor jump initially
-                closeModal(); // Close the modal
-                // Manually trigger smooth scroll to the form after closing the modal
-                const target = document.querySelector(this.getAttribute('href'));
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+            // Close modal then navigate (keeps smooth scroll behavior)
+            modalLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                closeModal();
+                const target = document.querySelector(href);
                 if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80, // Adjust for fixed header height
-                        behavior: 'smooth'
-                    });
-                }
-            }); 
-            modal.addEventListener('click', function(e) {
-                // Close if the user clicks on the overlay (the parent element)
-                if (e.target === modal) {
-                    closeModal();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    location.hash = href;
                 }
             });
         }
+
+        // Ensure external links with target="_blank" are safe
+        document.querySelectorAll('a[target="_blank"]').forEach(a => {
+            if (!a.rel.includes('noopener')) a.rel += (a.rel ? ' ' : '') + 'noopener';
+        });
     });
     </script>
 </body>
 </html>
-
