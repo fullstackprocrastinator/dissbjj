@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alec Gayson — Head Coach | DISS BJJ, Norfolk</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Meet Alec Gayson, Head Coach at DISS BJJ — professional background, coaching philosophy, qualifications and achievements."/>
+  <link rel="canonical" href="https://example.com/coach-alec-gayson.html"/>
+  <meta property="og:title" content="Alec Gayson — Head Coach | DISS BJJ"/>
+  <meta property="og:description" content="Professional and BJJ background, coaching philosophy, and credentials."/>
+  <meta property="og:type" content="profile"/>
+  <meta property="og:image" content="instructor.jpg"/>
+  <meta property="og:site_name" content="DISS BJJ"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+
+  <!-- Preconnects -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts & Icons (kept) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Analytics (kept) -->
+  <script data-goatcounter="https://bengouldingdev.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+  <style>
+    :root{
+      --black:#000;--white:#fff;--light-gray:#f5f5f5;--medium-gray:#e0e0e0;--dark-gray:#333;
+      --header-height:72px;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Open Sans',sans-serif;line-height:1.6;color:var(--dark-gray);background-color:var(--white);overflow-x:hidden}
+    h1,h2,h3,h4,h5{font-family:'Montserrat',sans-serif;font-weight:600;color:var(--black);margin-bottom:1rem;letter-spacing:-.5px}
+    a:focus,button:focus{outline:2px solid #000;outline-offset:2px}
+    .container{width:90%;max-width:1200px;margin:0 auto}
+
+    /* Header (matches site) */
+    header{background:var(--white);padding:1rem 0;box-shadow:0 1px 10px rgba(0,0,0,.05);border-bottom:1px solid var(--medium-gray);position:sticky;top:0;z-index:1000}
+    .header-container{display:flex;justify-content:space-between;align-items:center}
+    .logo h1{font-size:1.8rem;margin-bottom:0;font-weight:700;color:var(--black)}
+    .logo span{font-weight:300}
+    nav ul{display:flex;list-style:none}
+    nav ul li{margin-left:2rem}
+    nav ul li a{color:var(--black);text-decoration:none;font-weight:500;transition:all .3s;position:relative;font-size:1rem}
+    nav ul li a:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:1px;background:var(--black);transition:width .3s}
+    nav ul li a:hover:after{width:100%}
+
+    /* Hero (reuse image paths) */
+    .hero{
+      background:
+        linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+        url('instructor.jpg') no-repeat center center/cover;
+      padding:8rem 0;text-align:center;color:var(--white)
+    }
+    .hero h1{font-size:3rem;color:var(--white)}
+    .hero p{max-width:800px;margin:0.75rem auto 0;font-size:1.15rem;color:#f0f0f0}
+
+    /* Sections (match base spacing) */
+    section{padding:6rem 0;border-bottom:1px solid var(--medium-gray)}
+    .section-title{text-align:center;margin-bottom:3rem}
+    .section-title h2{font-size:2.5rem;position:relative;display:inline-block}
+    .section-title h2:after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:80px;height:2px;background:var(--black)}
+
+    /* Reuse 'about-content' split layout */
+    .about-content{display:flex;align-items:center;gap:4rem}
+    .about-text{flex:1}
+    .about-image{flex:1}
+    .about-image img{width:100%;height:auto;display:block;box-shadow:0 20px 40px rgba(0,0,0,.1)}
+    .btn{display:inline-block;background:var(--black);color:var(--white);padding:12px 30px;border-radius:0;text-decoration:none;font-weight:600;transition:all .3s;border:1px solid var(--black);margin:5px;letter-spacing:1px;text-transform:uppercase;font-size:.85rem}
+    .btn:hover{background:var(--white);color:var(--black)}
+    .btn.dark{color:var(--black);border-color:var(--black);background:transparent}
+    .btn.dark:hover{background:var(--black);color:var(--white)}
+
+    /* Small card utilities (new, minimal) */
+    .grid{display:grid;gap:1.5rem}
+    .grid-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .card{background:var(--light-gray);border:1px solid var(--medium-gray);padding:1.5rem}
+    .card h3{font-size:1.1rem;margin-bottom:.5rem}
+    .muted{color:#666}
+
+    /* Timeline style */
+    .timeline{border-left:2px solid var(--medium-gray);padding-left:1.25rem}
+    .timeline .item{margin-bottom:1.25rem}
+    .timeline .item h3{font-size:1.1rem;margin:0}
+    .timeline .item p{margin:.25rem 0 0}
+
+    /* Quote */
+    .coach-quote{background:var(--light-gray);border:1px solid var(--medium-gray);padding:2rem;text-align:center;font-style:italic}
+
+    /* Footer (reuse look) */
+    footer{background:var(--white);color:var(--dark-gray);padding:3rem 0 2rem;text-align:center}
+    .social-icons{margin:1.5rem 0}
+    .social-icons a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--black);color:var(--black);margin:0 .5rem;transition:all .3s;text-decoration:none}
+    .social-icons a:hover{background:var(--black);color:var(--white)}
+    .copyright{margin-top:1.5rem;font-size:.9rem}
+
+    /* Responsive */
+    @media (max-width:1024px){.hero h1{font-size:2.6rem}}
+    @media (max-width:768px){
+      .header-container{flex-direction:column;text-align:center}
+      nav ul{margin-top:1rem;justify-content:center;flex-wrap:wrap}
+      nav ul li{margin:.5rem 1rem}
+      .about-content{flex-direction:column}
+      .hero{padding:6rem 0}
+      .hero h1{font-size:2.3rem}
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important;scroll-behavior:auto}}
+  </style>
+
+  <!-- JSON-LD: Person (SportsCoach) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Alec Gayson",
+    "jobTitle":"Head Coach",
+    "affiliation": { "@type":"SportsOrganization", "name":"DISS BJJ" },
+    "worksFor": { "@type":"SportsOrganization", "name":"DISS BJJ" },
+    "image":"instructor.jpg",
+    "url":"https://example.com/coach-alec-gayson.html",
+    "sameAs":[
+      "https://www.instagram.com/diss.bjj/",
+      "https://www.facebook.com/DissBJJ",
+      "https://www.youtube.com/@grapplingcommunity2606"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container" role="navigation" aria-label="Primary">
+      <div class="logo">
+        <h1>DISS <span>BJJ</span></h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="newcomers.html">First Class?</a></li>
+          <li><a href="index.html#schedule">Schedule</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" role="banner" aria-label="Coach profile hero">
+    <div class="container hero-content">
+      <h1>Head Coach — Alec Gayson</h1>
+      <p>Professional background and BJJ journey — leadership, coaching philosophy and credentials at DISS BJJ.</p>
+      <div style="margin-top:1rem;">
+        <a href="index.html#schedule" class="btn">Train with Alec</a>
+        <a href="newcomers.html" class="btn dark">New to BJJ?</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro / Bio -->
+  <section aria-labelledby="bio-heading">
+    <div class="container">
+      <div class="section-title">
+        <h2 id="bio-heading">Profile & Background</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p><strong>Alec Gayson</strong> is the Head Coach of DISS BJJ. With decades of experience across coaching, physical training and rehabilitation, Alec’s approach blends technical clarity with a strong focus on athlete wellbeing and long-term development.</p>
+          <p>As a BJJ black belt, Alec has coached service personnel and civilians, developing fundamentals through to competition-ready skillsets. Expect structured classes, detail-rich instruction and an inclusive environment.</p>
+          <div style="margin-top:1.25rem">
+            <a href="index.html#schedule" class="btn">View Class Schedule</a>
+            <a href="#credentials" class="btn dark">Credentials</a>
+          </div>
+        </div>
+        <div class="about-image">
+          <img src="dissgi.jpg" alt="Coach Alec demonstrating technique" loading="lazy" decoding="async"
+               onerror="this.onerror=null;this.src='https://placehold.co/800x520/e0e0e0/333333?text=Coach+Profile';">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Credentials / Key Facts -->
+  <section id="credentials" aria-labelledby="cred-heading">
+    <div class="container">
+      <div class="section-title">
+        <h2 id="cred-heading">Credentials & Key Facts</h2>
+      </div>
+
+      <div class="grid grid-3" role="list" aria-label="Highlights">
+        <div class="card" role="listitem">
+          <h3><i class="fa-solid fa-medal"></i> Rank</h3>
+          <p class="muted">Brazilian Jiu-Jitsu Black Belt</p>
+        </div>
+        <div class="card" role="listitem">
+          <h3><i class="fa-solid fa-users-gear"></i> Coaching</h3>
+          <p class="muted">Lead & assistant roles across civilian and military programs</p>
+        </div>
+        <div class="card" role="listitem">
+          <h3><i class="fa-solid fa-dumbbell"></i> Physical Training</h3>
+          <p class="muted">Strength & conditioning; exercise rehabilitation experience</p>
+        </div>
+        <div class="card" role="listitem">
+          <h3><i class="fa-solid fa-chess-knight"></i> Specialisms</h3>
+          <p class="muted">Fundamentals, pressure passing, defensive systems, positional sparring</p>
+        </div>
+        <div class="card" role="listitem">
+          <h3><i class="fa-solid fa-graduation-cap"></i> Qualifications</h3>
+          <p class="muted">[Add relevant certifications, e.g. coaching awards, PT quals]</p>
+        </div>
+        <div class="card" role="listitem">
+          <h3><i class="fa-solid fa-trophy"></i> Highlights</h3>
+          <p class="muted">[Add notable coaching successes or competitive results]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coaching Philosophy -->
+  <section aria-labelledby="philosophy-heading">
+    <div class="container">
+      <div class="section-title">
+        <h2 id="philosophy-heading">Coaching Philosophy</h2>
+      </div>
+      <div class="coach-quote">
+        <p>“Technique first, pressure measured, progress consistent. Build solid positions, understand reactions, and develop a game you can trust under fatigue.”</p>
+      </div>
+      <div class="about-content" style="margin-top:2rem">
+        <div class="about-text">
+          <p><strong>Structure & clarity:</strong> sessions progress from warm-up and movement prep to focused technical work, positional study and carefully managed sparring.</p>
+          <p><strong>Safety & longevity:</strong> emphasis on intelligent training loads, tap etiquette and protective habits so students can develop consistently.</p>
+          <p><strong>Inclusive learning:</strong> beginners and experienced grapplers train side-by-side with adjustments for goals, experience and mobility.</p>
+        </div>
+        <div class="about-image">
+          <img src="nogi.jpg" alt="Positional training at DISS BJJ" loading="lazy" decoding="async"
+               onerror="this.onerror=null;this.src='https://placehold.co/800x520/e0e0e0/333333?text=Training';">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Timeline (edit freely) -->
+  <section aria-labelledby="timeline-heading">
+    <div class="container">
+      <div class="section-title">
+        <h2 id="timeline-heading">Experience Timeline</h2>
+      </div>
+      <div class="timeline">
+        <div class="item">
+          <h3>Head Coach — DISS BJJ</h3>
+          <p class="muted">[Years] Structured fundamentals, gi & no-gi programs; community growth & mentoring.</p>
+        </div>
+        <div class="item">
+          <h3>Coaching & PT / Rehab Roles</h3>
+          <p class="muted">[Years] Physical training, exercise rehabilitation and return-to-sport planning.</p>
+        </div>
+        <div class="item">
+          <h3>BJJ Coaching (Service Programs)</h3>
+          <p class="muted">[Years] Coaching roles within service teams; curriculum design and competition prep.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Watch / Learn CTA (reuses your classes) -->
+  <section aria-labelledby="watch-heading" class="youtube-section" style="border-bottom:none;">
+    <div class="container">
+      <div class="section-title">
+        <h2 id="watch-heading">Watch Alec Teach</h2>
+      </div>
+      <div class="video-container">
+        <iframe
+          src="https://www.youtube.com/embed/videoseries?list=UU4eX8vGclH3o1aW1wTFvZA"
+          title="Latest uploads from DISS BJJ"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-info">
+        <h3>Instructionals & Clips</h3>
+        <p>Explore recent technique breakdowns and class moments.</p>
+        <a href="https://www.youtube.com/@grapplingcommunity2606" target="_blank" rel="noopener">Visit Our YouTube Channel</a>
+      </div>
+      <div style="text-align:center;margin-top:2rem;">
+        <a href="index.html#schedule" class="btn">Book a Class</a>
+        <a href="newcomers.html" class="btn dark">Your First Class Guide</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <div class="container">
+      <h3>DISS BJJ</h3>
+      <p>Brazilian Jiu-Jitsu Community in Diss, Norfolk</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/DissBJJ" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/diss.bjj/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@grapplingcommunity2606" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+      <p class="copyright">&copy; 2025 Grappling Community Ltd / Let's Train - Diss BJJ. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
