@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DISS BJJ | Brazilian Jiu-Jitsu | Diss, Norfolk</title>
-
     <!-- SEO -->
     <meta name="description" content="Diss BJJ — Brazilian Jiu-Jitsu in Diss, Norfolk. Friendly classes for all levels with BJJ black belt Alec Gayson. Free taster session available.">
     <link rel="canonical" href="https://example.com/">
@@ -14,18 +13,14 @@
     <meta property="og:image" content="instructor.jpg">
     <meta property="og:site_name" content="DISS BJJ">
     <meta name="twitter:card" content="summary_large_image">
-
     <!-- Preconnects (faster fonts/icons) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <!-- (kept) Font Awesome + Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-
     <!-- (kept) GoatCounter -->
     <script data-goatcounter="https://bengouldingdev.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
     <style>
         :root{
             --black:#000;--white:#fff;--light-gray:#f5f5f5;--medium-gray:#e0e0e0;--dark-gray:#333;
@@ -37,13 +32,10 @@
         body{font-family:'Open Sans',sans-serif;line-height:1.6;color:var(--dark-gray);background-color:var(--white);overflow-x:hidden}
         h1,h2,h3,h4,h5{font-family:'Montserrat',sans-serif;font-weight:600;color:var(--black);margin-bottom:1rem;letter-spacing:-.5px}
         a:focus,button:focus{outline:2px solid #000;outline-offset:2px}
-
         .container{width:90%;max-width:1200px;margin:0 auto}
-
         /* Skip link */
         .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
         .skip-link:focus{left:1rem;top:1rem;width:auto;height:auto;background:#000;color:#fff;padding:.5rem .75rem;z-index:2000}
-
         /* Header */
         header{background:transparent;padding:1.5rem 0;position:fixed;width:100%;z-index:1000;transition:all .4s ease}
         header.scrolled{background:var(--white);padding:1rem 0;box-shadow:0 1px 10px rgba(0,0,0,.05);border-bottom:1px solid var(--medium-gray)}
@@ -59,7 +51,6 @@
         nav ul li a:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:1px;background:var(--white);transition:width .3s}
         header.scrolled nav ul li a:after{background:var(--black)}
         nav ul li a:hover:after{width:100%}
-
         /* Hero */
         .hero{
             background:
@@ -74,20 +65,17 @@
         .btn:hover{background:var(--white);color:var(--black)}
         .btn.dark{color:var(--black);border-color:var(--black)}
         .btn.dark:hover{background:var(--black);color:var(--white)}
-
         /* Section base + anchor offset */
         section{padding:6rem 0;border-bottom:1px solid var(--medium-gray);scroll-margin-top:calc(var(--header-height) + 16px)}
         .section-title{text-align:center;margin-bottom:3rem}
         .section-title h2{font-size:2.5rem;position:relative;display:inline-block}
         .section-title h2:after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:80px;height:2px;background:var(--black)}
-
         /* About */
         .about-content{display:flex;align-items:center;gap:4rem}
         .about-text{flex:1}
         .about-text p{margin-bottom:1.5rem;line-height:1.8}
         .about-image{flex:1}
         .about-image img{width:100%;height:auto;display:block;box-shadow:0 20px 40px rgba(0,0,0,.1)}
-
         /* Schedule */
         .schedule{background-color:var(--light-gray);border-bottom:1px solid var(--medium-gray)}
         .form-intro{max-width:700px;margin:0 auto 2rem;padding:2rem;background:var(--white);border:1px solid var(--medium-gray);box-shadow:0 10px 30px rgba(0,0,0,.05);text-align:center}
@@ -103,14 +91,6 @@
         .costing-info h3{margin:0 0 1rem;font-size:1.5rem;color:var(--black)}
         .costing-info p{margin-bottom:.5rem;color:var(--dark-gray);font-size:1.1rem}
         .costing-info .payment-methods{font-size:.9rem;font-style:italic;color:#555;margin-top:1rem}
-        .training-notice{max-width:700px;margin:2rem auto 0;padding:1.5rem 2rem;background-color:var(--warning-yellow-bg);border:1px solid var(--warning-yellow-border);border-left:5px solid var(--warning-yellow-accent);text-align:left}
-        .training-notice h3{margin:0 0 1rem;color:var(--warning-yellow-text);font-size:1.5rem}
-        .training-notice p{margin-bottom:.5rem;color:var(--dark-gray)}
-        .training-notice ul{list-style-type:none;margin-bottom:1rem;padding-left:0}
-        .training-notice li{margin-bottom:.5rem;position:relative;padding-left:25px}
-        .training-notice li::before{content:'\f071';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;left:0;top:2px;color:var(--warning-yellow-accent)}
-        .training-notice .tbc-notice{margin-top:1.5rem;font-style:italic}
-
         /* Reviews */
         #reviews{background-color:var(--white)}
         .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
@@ -121,17 +101,14 @@
         .review-author{text-align:right}
         .author-name{font-weight:700;font-family:'Montserrat',sans-serif;margin-bottom:.25rem}
         .author-capacity{font-size:.9rem;color:var(--dark-gray)}
-
         /* YouTube */
         .youtube-section{background-color:var(--white)}
         .video-container{max-width:800px;margin:0 auto;position:relative;padding-bottom:56.25%;height:0;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.1)}
         .video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
-
         .video-info{text-align:center;margin-top:2rem}
         .video-info h3{margin-bottom:1rem}
         .video-info a{color:var(--dark-gray);text-decoration:none;border-bottom:1px solid var(--dark-gray);transition:all .3s}
         .video-info a:hover{color:var(--black);border-bottom:1px solid var(--black)}
-
         /* Contact */
         .contact-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;max-width:900px;margin:0 auto}
         .contact-info{padding:2rem;border:1px solid var(--medium-gray)}
@@ -141,11 +118,9 @@
         .contact-text h4{margin-bottom:.3rem;font-weight:600}
         .contact-text p,.contact-text a{color:var(--dark-gray);text-decoration:none;transition:color .3s}
         .contact-text a:hover{color:var(--black)}
-
         /* Map */
         .map-container{height:300px;border:1px solid var(--medium-gray)}
         .map-container iframe{width:100%;height:100%;border:none}
-
         /* Footer */
         footer{background:var(--white);color:var(--dark-gray);padding:3rem 0 2rem;text-align:center}
         .footer-content{display:flex;flex-direction:column;align-items:center}
@@ -153,7 +128,6 @@
         .social-icons a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--black);border-radius:0;color:var(--black);margin:0 .5rem;transition:all .3s}
         .social-icons a:hover{background:var(--black);color:var(--white)}
         .copyright{margin-top:1rem;font-size:.9rem}
-
         /* Modal */
         .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:2000;display:flex;justify-content:center;align-items:center;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease}
         .modal-overlay.show{opacity:1;visibility:visible}
@@ -164,15 +138,12 @@
         .modal-content h2{font-size:2rem;color:var(--black);margin-bottom:1.5rem}
         .modal-content p{margin-bottom:1.5rem;font-size:1.1rem;line-height:1.7}
         .modal-content p strong{font-weight:600;color:var(--black)}
-
         /* Animations */
         @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-
         /* Reduced motion */
         @media (prefers-reduced-motion: reduce){
             *{animation:none !important;transition:none !important;scroll-behavior:auto}
         }
-
         /* Responsive */
         @media (max-width:1024px){
             .hero h2{font-size:3rem}
@@ -203,12 +174,10 @@
             nav ul li{margin:.3rem .8rem}
             .hero-content{padding-top:20px}
         }
-
         /* Back to top */
         .to-top{position:fixed;right:1rem;bottom:1rem;z-index:1500;display:none}
         .to-top.show{display:inline-flex}
     </style>
-
     <!-- JSON-LD: local sports club -->
     <script type="application/ld+json">
     {
@@ -237,7 +206,6 @@
 </head>
 <body>
     <a href="#home" class="skip-link">Skip to content</a>
-
     <!-- Header -->
     <header id="main-header">
         <div class="container header-container" role="navigation" aria-label="Primary">
@@ -256,7 +224,6 @@
             </nav>
         </div>
     </header>
-
     <!-- Hero -->
     <section class="hero" id="home" role="banner" aria-label="Hero">
         <div class="container hero-content">
@@ -268,7 +235,6 @@
             </div>
         </div>
     </section>
-
     <!-- About -->
     <section id="about" aria-labelledby="about-heading">
         <div class="container">
@@ -291,7 +257,7 @@
             </div>
         </div>
     </section>
-    
+   
     <!-- Newcomers -->
     <section id="newcomers" aria-labelledby="newcomers-heading">
         <div class="container">
@@ -314,22 +280,19 @@
             </div>
         </div>
     </section>
-
     <!-- Schedule -->
     <section class="schedule" id="schedule" aria-labelledby="schedule-heading">
         <div class="container">
-
             <div class="form-intro">
                 <h3>Interested in a free taster session?</h3>
                 <p>Let us know here…</p>
             </div>
-
             <!-- (kept) Form Embed -->
             <div class="form-wrapper" style="height: 511px;">
                 <iframe
                     src="https://link.saleshero.uk/widget/form/j3HFCtTUuJP3HEDCjIHw"
                     style="width:100%;height:100%;border:none;border-radius:3px"
-                    id="inline-j3HFCtTUuJP3HEDCjIHw" 
+                    id="inline-j3HFCtTUuJP3HEDCjIHw"
                     data-layout="{'id':'INLINE'}"
                     data-trigger-type="alwaysShow"
                     data-activation-type="alwaysActivated"
@@ -344,11 +307,9 @@
                 </iframe>
                 <script src="https://link.saleshero.uk/js/form_embed.js" defer></script>
             </div>
-
             <div class="section-title">
                 <h2 id="schedule-heading">Class Schedule</h2>
             </div>
-
             <div class="schedule-table-wrapper" role="region" aria-label="Weekly schedule">
                 <table class="schedule-table">
                     <thead>
@@ -375,31 +336,16 @@
                     </tbody>
                 </table>
             </div>
-
             <div class="costing-info">
                 <h3>Pricing</h3>
                 <p>Currently operating a simple pay as you train routine for just <strong>£8 per class.</strong></p>
                 <p class="payment-methods">Card or cash accepted (no change available).</p>
             </div>
-
-            <!-- START: Training Dates Notice (RESTORED) -->
-            <div class="training-notice">
-                <h3>Important Training Updates</h3>
-                <p><strong>Please note, there will be NO training on the following dates:</strong></p>
-                <ul>
-                    <li>Sat 14th November</li>
-                    <li>Fri 21st November</li>
-                </ul>
-                <p class="tbc-notice">Normal schedule resumes outside these dates.</p>
-            </div>
-            <!-- END: Training Dates Notice -->
-
             <div style="text-align: center; margin-top: 2rem;">
                 <p><strong>Location:</strong> Heywood Sports & Fitness, Walcot Road, Diss, Norfolk, IP22 4DB</p>
             </div>
         </div>
     </section>
-
     <!-- Reviews -->
     <section id="reviews" aria-labelledby="reviews-heading">
         <div class="container">
@@ -437,7 +383,6 @@
             </div>
         </div>
     </section>
-
     <!-- YouTube -->
     <section id="youtube" class="youtube-section" aria-labelledby="youtube-heading">
         <div class="container">
@@ -458,7 +403,6 @@
             </div>
         </div>
     </section>
-
     <!-- Contact -->
     <section id="contact" aria-labelledby="contact-heading">
         <div class="container">
@@ -468,7 +412,7 @@
             <div class="contact-container">
                 <div class="contact-info" aria-label="Contact details">
                     <h3>Get In Touch</h3>
-                    
+                   
                     <div class="contact-item">
                         <div class="contact-icon" aria-hidden="true">
                             <i class="fas fa-map-marker-alt"></i>
@@ -478,7 +422,7 @@
                             <p>Heywood Sports & Fitness,<br>Walcot Road, Diss,<br>Norfolk, IP22 4DB</p>
                         </div>
                     </div>
-                    
+                   
                     <div class="contact-item">
                         <div class="contact-icon" aria-hidden="true">
                             <i class="fas fa-envelope"></i>
@@ -489,7 +433,7 @@
                         </div>
                     </div>
                 </div>
-                
+               
                 <div>
                     <div class="map-container" role="region" aria-label="Map to Heywood Sports & Fitness">
                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4870.877763418926!2d1.1159109!3d52.3805938!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d9c0f2691c3dbd%3A0x753ef974239f9ed1!2sHeywood%20Sports%20%26%20Fitness!5e0!3m2!1sen!2suk!4v1749076370732!5m2!1sen!2suk"
@@ -503,7 +447,6 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer role="contentinfo">
         <div class="container">
@@ -515,25 +458,23 @@
                     <a href="https://www.instagram.com/diss.bjj/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.youtube.com/@grapplingcommunity2606" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
-                <p class="copyright">&copy; 2025 Grappling Community Ltd / Let's Train - Diss BJJ. All rights reserved.</p>
+                <p class="copyright">© 2025 Grappling Community Ltd / Let's Train - Diss BJJ. All rights reserved.</p>
             </div>
         </div>
     </footer>
-    
+   
     <!-- Incentive Modal (kept) -->
     <div id="incentive-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-content">
-            <span class="modal-close-btn" role="button" aria-label="Close dialog">&times;</span>
+            <span class="modal-close-btn" role="button" aria-label="Close dialog">×</span>
             <h2 id="modal-title">Try Your First Session For FREE!</h2>
             <p>New to BJJ? Or just new to Diss BJJ? Come and try your first session on us. No obligations, just pure grappling.</p>
             <p><strong>Experience BJJ, meet our community!</strong></p>
             <a href="#schedule" class="btn dark modal-link">Book Your Free Session</a>
         </div>
     </div>
-
     <!-- Back to top -->
     <a href="#home" class="btn dark to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
-
     <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Header scroll effect + back-to-top toggle
@@ -546,7 +487,6 @@
         };
         window.addEventListener('scroll', onScroll);
         onScroll();
-
         // Reveal sections on view (reduced motion safe)
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (!reduceMotion) {
@@ -559,7 +499,6 @@
                     }
                 });
             }, { threshold: 0.1 });
-
             document.querySelectorAll('section').forEach(section => {
                 section.style.opacity = 0;
                 section.style.transform = 'translateY(20px)';
@@ -567,29 +506,22 @@
                 observer.observe(section);
             });
         }
-
         // Incentive Modal
         const modal = document.getElementById('incentive-modal');
         const closeBtn = document.querySelector('.modal-close-btn');
         const modalLink = document.querySelector('.modal-link');
-
         const showModal = () => modal.classList.add('show');
         const closeModal = () => {
             modal.classList.remove('show');
             sessionStorage.setItem('dissBjjFreeTasterClosed', 'true');
         };
-
         const shouldShow = () => !sessionStorage.getItem('dissBjjFreeTasterClosed');
-
         if (modal && shouldShow()) {
             setTimeout(showModal, 1500);
         }
-
         if (modal) {
             closeBtn.addEventListener('click', closeModal);
             modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-
-            // Close modal then navigate (keeps smooth scroll behavior)
             modalLink.addEventListener('click', function (e) {
                 e.preventDefault();
                 const href = this.getAttribute('href');
@@ -602,7 +534,6 @@
                 }
             });
         }
-
         // Ensure external links with target="_blank" are safe
         document.querySelectorAll('a[target="_blank"]').forEach(a => {
             if (!a.rel.includes('noopener')) a.rel += (a.rel ? ' ' : '') + 'noopener';
@@ -611,5 +542,3 @@
     </script>
 </body>
 </html>
-
-
