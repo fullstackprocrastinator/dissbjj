@@ -5,340 +5,193 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DISS BJJ | Brazilian Jiu-Jitsu | Diss, Norfolk</title>
     
-    <meta name="description" content="Diss BJJ — Brazilian Jiu-Jitsu in Diss, Norfolk. Join a world-class grappling community led by Black Belt Alec Gayson.">
-    <link rel="canonical" href="https://example.com/">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;600;800&family=Montserrat:wght@900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <script data-goatcounter="https://bengouldingdev.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
     <style>
         :root {
-            --primary: #d4af37; /* Gold Accent */
-            --bg-dark: #0a0a0a;
-            --bg-card: #141414;
-            --text-main: #ffffff;
-            --text-dim: #a0a0a0;
-            --header-h: 80px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --accent: #000000;
+            --text: #1a1a1a;
+            --light: #f9f9f9;
+            --border: #e2e2e2;
+            --white: #ffffff;
+            --gold: #d4af37; /* Used sparingly for highlights */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        
         body { 
             font-family: 'Inter', sans-serif; 
-            background-color: var(--bg-dark); 
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
+            color: var(--text); 
+            line-height: 1.7; 
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3 { font-family: 'Syncopate', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        ul { list-style: none; }
-        img { max-width: 100%; height: auto; display: block; }
-
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; }
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-
-        /* --- NAVIGATION --- */
+        
+        /* --- HEADER --- */
         header {
-            height: var(--header-h);
-            display: flex;
-            align-items: center;
-            position: fixed;
-            width: 100%;
+            padding: 20px 0;
+            position: sticky;
             top: 0;
-            z-index: 1000;
-            transition: var(--transition);
-            border-bottom: 1px solid transparent;
-        }
-
-        header.scrolled {
-            background: rgba(10, 10, 10, 0.95);
+            background: rgba(255,255,255,0.9);
             backdrop-filter: blur(10px);
-            height: 70px;
-            border-bottom: 1px solid #222;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
         }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.2rem; font-weight: 800; }
+        .logo span { font-weight: 400; color: #666; }
+        
+        nav ul { display: flex; list-style: none; gap: 30px; }
+        nav a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; }
+        nav a:hover { color: var(--gold); }
 
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-
-        .logo { font-size: 1.2rem; font-weight: 800; border-left: 4px solid var(--primary); padding-left: 15px; }
-        .logo span { color: var(--primary); }
-
-        nav ul { display: flex; gap: 2rem; }
-        nav ul a { font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; color: var(--text-dim); }
-        nav ul a:hover { color: var(--primary); }
-
-        /* --- HERO SECTION --- */
+        /* --- HERO --- */
         .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('instructor.jpg') center/cover no-repeat;
-            position: relative;
+            padding: 120px 0;
+            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('instructor.jpg') center/cover;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
         }
-
-        .hero-content { max-width: 800px; }
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; margin-bottom: 1.5rem; }
-        .hero p { font-size: 1.2rem; color: var(--text-dim); margin-bottom: 2.5rem; max-width: 600px; }
-
-        .launch-badge {
-            display: inline-block;
-            background: var(--primary);
-            color: black;
-            padding: 5px 15px;
-            font-weight: 800;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-        }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 20px; line-height: 1.1; }
+        .hero p { max-width: 600px; margin: 0 auto 40px; font-size: 1.2rem; color: #444; }
 
         .btn {
             display: inline-block;
-            padding: 18px 35px;
-            background: var(--primary);
-            color: #000;
-            font-weight: 800;
+            padding: 15px 40px;
+            background: var(--accent);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
             text-transform: uppercase;
             font-size: 0.8rem;
             letter-spacing: 1px;
-            border: none;
-            cursor: pointer;
+            transition: 0.3s;
         }
-
-        .btn.outline { background: transparent; color: #fff; border: 1px solid #444; margin-left: 10px; }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2); }
+        .btn:hover { background: #333; transform: translateY(-2px); }
 
         /* --- SECTIONS --- */
         section { padding: 100px 0; }
-        .section-header { margin-bottom: 4rem; text-align: center; }
-        .section-header h2 { font-size: 2rem; position: relative; display: inline-block; }
-        .section-header h2::after { content: ''; width: 50%; height: 3px; background: var(--primary); position: absolute; bottom: -15px; left: 25%; }
+        .section-title { margin-bottom: 60px; text-align: center; }
+        .section-title h2 { font-size: 2.5rem; position: relative; padding-bottom: 15px; }
+        .section-title h2::after { content: ''; width: 60px; height: 4px; background: var(--accent); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
 
-        /* --- ABOUT --- */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        .about-text h3 { color: var(--primary); margin-bottom: 1rem; font-size: 1rem; }
-        .about-image img { border: 10px solid var(--bg-card); filter: grayscale(20%); }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-img img { width: 100%; border: 1px solid var(--border); padding: 10px; background: white; }
 
         /* --- SCHEDULE TABLE --- */
-        .schedule-box { background: var(--bg-card); padding: 2rem; border-radius: 4px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-        th { text-align: left; padding: 15px; color: var(--primary); border-bottom: 2px solid #222; text-transform: uppercase; font-size: 0.7rem; }
-        td { padding: 20px 15px; border-bottom: 1px solid #222; }
-        .day-label { font-weight: 800; color: #fff; }
+        .schedule-wrap { background: var(--light); padding: 40px; border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; background: white; }
+        th { text-align: left; padding: 20px; background: var(--accent); color: white; text-transform: uppercase; font-size: 0.75rem; }
+        td { padding: 20px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+        .day-col { font-weight: 700; }
 
-        .price-card { 
-            background: var(--primary); 
-            color: #000; 
-            padding: 40px; 
+        .price-tag { 
             text-align: center; 
-            height: 100%; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
+            padding: 40px; 
+            border: 2px dashed var(--border);
+            margin-top: 30px;
         }
-        .price-card h3 { font-size: 3rem; margin: 10px 0; }
+        .price-tag h3 { font-size: 3rem; color: var(--gold); }
 
         /* --- REVIEWS --- */
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .review-card { background: var(--bg-card); padding: 2rem; border-top: 3px solid var(--primary); }
-        .review-card p { font-style: italic; color: var(--text-dim); margin-bottom: 1.5rem; }
-        .author { font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        .review-card { padding: 40px; border: 1px solid var(--border); background: var(--white); position: relative; }
+        .review-card i { color: var(--border); font-size: 2rem; margin-bottom: 20px; display: block; }
+        .review-card p { font-style: italic; margin-bottom: 20px; }
+        .author { font-weight: 700; text-transform: uppercase; font-size: 0.8rem; }
 
-        /* --- FORM --- */
-        .form-container { background: #fff; padding: 20px; border-radius: 4px; }
+        footer { background: var(--light); padding: 80px 0 40px; border-top: 1px solid var(--border); text-align: center; }
+        .socials { margin-bottom: 30px; }
+        .socials a { font-size: 1.5rem; color: var(--text); margin: 0 15px; }
 
-        /* --- FOOTER --- */
-        footer { padding: 60px 0; background: #050505; border-top: 1px solid #111; text-align: center; }
-        .social-links { margin: 2rem 0; display: flex; justify-content: center; gap: 1.5rem; }
-        .social-links a { font-size: 1.5rem; color: var(--text-dim); }
-        .social-links a:hover { color: var(--primary); }
-
-        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            nav { display: none; }
-            .grid-2 { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 3rem; }
-            section { padding: 60px 0; }
+            .grid-2 { grid-template-columns: 1fr; gap: 40px; }
+            header nav { display: none; }
+            .hero h1 { font-size: 2.5rem; }
         }
-
-        /* Modal styling */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9); z-index: 2000;
-            display: none; align-items: center; justify-content: center;
-        }
-        .modal-content { 
-            background: var(--bg-card); padding: 3rem; max-width: 500px; 
-            text-align: center; border: 1px solid var(--primary);
-        }
-        .modal-content h2 { color: var(--primary); margin-bottom: 1rem; }
     </style>
 </head>
 <body>
 
-    <header id="main-header">
+    <header>
         <div class="container nav-content">
-            <div class="logo">DISS <span>BJJ</span></div>
+            <div class="logo">DISS <strong>BJJ</strong> <span>#LetsTrain</span></div>
             <nav>
                 <ul>
-                    <li><a href="#about">The Club</a></li>
+                    <li><a href="#about">About</a></li>
                     <li><a href="#schedule">Schedule</a></li>
-                    <li><a href="#reviews">Community</a></li>
-                    <li><a href="#youtube">Technique</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            <a href="#schedule" class="btn" style="padding: 10px 20px; font-size: 0.7rem;">Join a Class</a>
         </div>
     </header>
 
     <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <span class="launch-badge">Official Launch May 2026</span>
-                <h1>Master the <br><span style="color: var(--primary);">Ground Game.</span></h1>
-                <p>High-level Brazilian Jiu-Jitsu and grappling instruction in the heart of Norfolk. Led by Black Belt Alec Gayson.</p>
-                <div class="hero-actions">
-                    <a href="#schedule" class="btn">View Schedule</a>
-                    <a href="newcomers.html" class="btn outline">Beginners Guide</a>
-                </div>
-            </div>
+            <p style="text-transform: uppercase; font-weight: 700; letter-spacing: 2px; color: var(--gold);" id="cms-hero-badge">Loading...</p>
+            <h1 id="cms-hero-title">Loading...</h1>
+            <p id="cms-hero-text">Loading...</p>
+            <a href="#schedule" class="btn">Book Free Taster</a>
         </div>
     </section>
 
     <section id="about">
         <div class="container">
             <div class="grid-2">
-                <div class="about-image">
-                    <img src="dissgi.jpg" alt="BJJ Training">
-                </div>
                 <div class="about-text">
-                    <h3>The Instructor</h3>
-                    <h2>Built on Experience.</h2>
-                    <p style="margin: 1.5rem 0; color: var(--text-dim);">Led by Alec Gayson—a BJJ Black Belt and former head military coach for the Royal Marines BJJ team. We don't just teach moves; we build technique, discipline, and a welcoming environment for all skill levels.</p>
-                    <p style="color: var(--text-dim);">Whether your goal is self-defense, competition, or fitness, our community is here to push you forward.</p>
+                    <div class="section-title" style="text-align: left;">
+                        <h2 style="text-align: left; padding-left: 0;">Our Club</h2>
+                    </div>
+                    <p>Diss BJJ is a Brazilian Jiu-Jitsu & grappling community based in the heart of Diss, Norfolk. We provide high-quality instruction for all levels, from complete beginners to experienced competitors.</p>
+                    <p style="margin-top: 20px;">Led by BJJ black belt <strong>Alec Gayson</strong>, we focus on technique, discipline, and creating a welcoming environment for everyone.</p>
+                </div>
+                <div class="about-img">
+                    <img src="dissgi.jpg" alt="Training">
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="schedule" style="background: #0f0f0f;">
+    <section id="schedule" style="background: var(--light);">
         <div class="container">
-            <div class="section-header">
-                <h2>Class Timetable</h2>
+            <div class="section-title">
+                <h2>Class Schedule</h2>
             </div>
-            <div class="grid-2">
-                <div class="schedule-box">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Day</th>
-                                <th>Class Type</th>
-                                <th>Time</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="day-label">Friday</td>
-                                <td>No-Gi Foundations</td>
-                                <td>18:15</td>
-                            </tr>
-                            <tr>
-                                <td class="day-label">Friday</td>
-                                <td>No-Gi Intermediate</td>
-                                <td>19:30</td>
-                            </tr>
-                            <tr>
-                                <td class="day-label">Saturday</td>
-                                <td>Gi Training</td>
-                                <td>09:00</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="price-card">
-                    <p>Current Training Rate</p>
-                    <h3>£8</h3>
-                    <p>Per Session / Pay-as-you-train</p>
-                    <p style="font-size: 0.7rem; margin-top: 1rem; opacity: 0.8;">Cash or Card Accepted</p>
-                </div>
+            <div class="schedule-wrap">
+                <table id="cms-schedule-table">
+                    <thead>
+                        <tr><th>Day</th><th>Class</th><th>Time</th></tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
-
-            <div style="margin-top: 4rem;">
-                <div class="section-header">
-                    <h2>Book your free taster</h2>
-                </div>
-                <div class="form-container">
-                    <iframe
-                        src="https://link.saleshero.uk/widget/form/j3HFCtTUuJP3HEDCjIHw"
-                        style="width:100%;height:511px;border:none;border-radius:3px"
-                        id="inline-j3HFCtTUuJP3HEDCjIHw"
-                        data-layout="{'id':'INLINE'}"
-                        title="Website Contact Form">
-                    </iframe>
-                    <script src="https://link.saleshero.uk/js/form_embed.js" defer></script>
-                </div>
+            <div class="price-tag">
+                <p>PAY AS YOU TRAIN</p>
+                <h3 id="cms-price-amount">--</h3>
+                <p id="cms-price-label">--</p>
             </div>
         </div>
     </section>
 
     <section id="reviews">
         <div class="container">
-            <div class="section-header">
-                <h2>Community Feedback</h2>
+            <div class="section-title">
+                <h2>Testimonials</h2>
             </div>
-            <div class="reviews-grid">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
                 <div class="review-card">
-                    <p>"A fantastic BJJ coach with a true passion for the sport coupled with some high level, technical knowledge."</p>
+                    <i class="fas fa-quote-left"></i>
+                    <p>A fantastic BJJ coach with a true passion for the sport coupled with some high level, technical knowledge.</p>
                     <div class="author">Patrick O’Hagan</div>
                 </div>
                 <div class="review-card">
-                    <p>"Al has always been a superb coach. Very informative and accommodating, he creates a terrific learning environment."</p>
+                    <i class="fas fa-quote-left"></i>
+                    <p>Al has always been a superb coach. Very informative and accommodating, he creates a terrific learning environment.</p>
                     <div class="author">Lewis P.</div>
-                </div>
-                <div class="review-card">
-                    <p>"His knowledge surrounding conditioning training and also the rehab side was impeccable."</p>
-                    <div class="author">Joe Staley</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="youtube" style="background: #000;">
-        <div class="container">
-            <div class="section-header">
-                <h2>Technique Gallery</h2>
-            </div>
-            <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
-                <iframe style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" src="https://www.youtube.com/embed/hSez7G7tOIs" allowfullscreen></iframe>
-            </div>
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="https://www.youtube.com/@grapplingcommunity2606" target="_blank" style="color: var(--primary); font-weight: 700;">VISIT OUR YOUTUBE CHANNEL <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <div class="grid-2">
-                <div>
-                    <h2>Location</h2>
-                    <p style="color: var(--text-dim); margin: 1rem 0;">Heywood Sports & Fitness, Walcot Road, Diss, Norfolk, IP22 4DB</p>
-                    <a href="mailto:letstrain@grapplingcommunity.com" style="color: var(--primary);">letstrain@grapplingcommunity.com</a>
-                </div>
-                <div style="height: 300px; background: #222;">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2440.6!2d1.115!3d52.38!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d996!2sHeywood%20Sports!5e0!3m2!1sen!2suk!4v1" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
@@ -346,46 +199,33 @@
 
     <footer>
         <div class="container">
-            <div class="logo" style="display:inline-block; border: none; font-size: 2rem; margin-bottom: 1rem;">DISS <span>BJJ</span></div>
-            <p>#LETSTRAIN</p>
-            <div class="social-links">
-                <a href="https://www.facebook.com/DissBJJ"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/diss.bjj/"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@grapplingcommunity2606"><i class="fab fa-youtube"></i></a>
+            <div class="socials">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
-            <p style="font-size: 0.7rem; color: #444;">&copy; 2026 Grappling Community Ltd. Built for the mat.</p>
+            <p>© 2026 Diss BJJ / Grappling Community. All rights reserved.</p>
         </div>
     </footer>
 
-    <div id="incentive-modal" class="modal-overlay">
-        <div class="modal-content">
-            <h2>START FOR FREE</h2>
-            <p>Ready to step on the mat? Your first session at Diss BJJ is completely free.</p>
-            <button class="btn" onclick="closeModal()" style="margin-top: 1.5rem;">Let's Train</button>
-        </div>
-    </div>
-
     <script>
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('main-header');
-            header.classList.toggle('scrolled', window.scrollY > 50);
-        });
-
-        // Modal Logic
-        const modal = document.getElementById('incentive-modal');
-        function closeModal() {
-            modal.style.display = 'none';
-            sessionStorage.setItem('modalClosed', 'true');
+        async function loadContent() {
+            try {
+                const response = await fetch('./data.json');
+                const data = await response.json();
+                document.getElementById('cms-hero-badge').innerText = data.hero.badge;
+                document.getElementById('cms-hero-title').innerText = data.hero.title;
+                document.getElementById('cms-hero-text').innerText = data.hero.subtext;
+                document.getElementById('cms-price-amount').innerText = data.pricing.amount;
+                document.getElementById('cms-price-label').innerText = data.pricing.label;
+                const tableBody = document.querySelector('#cms-schedule-table tbody');
+                tableBody.innerHTML = ''; 
+                data.schedule.forEach(item => {
+                    tableBody.innerHTML += `<tr><td class="day-col">${item.day}</td><td>${item.type}</td><td>${item.time}</td></tr>`;
+                });
+            } catch (e) { console.error(e); }
         }
-
-        window.onload = () => {
-            if (!sessionStorage.getItem('modalClosed')) {
-                setTimeout(() => {
-                    modal.style.display = 'flex';
-                }, 2000);
-            }
-        };
+        window.addEventListener('DOMContentLoaded', loadContent);
     </script>
 </body>
 </html>
