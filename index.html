@@ -22,6 +22,7 @@
             --black:#000;--white:#fff;--light-gray:#f5f5f5;--medium-gray:#e0e0e0;--dark-gray:#333;
             --warning-yellow-bg:#fff3cd;--warning-yellow-border:#ffeeba;--warning-yellow-accent:#ffc107;--warning-yellow-text:#856404;
             --header-height:72px;
+            --accent-purple: #7a5ba0; /* Matching the timetable's purple accent */
         }
         *{margin:0;padding:0;box-sizing:border-box}
         html{scroll-behavior:smooth}
@@ -78,11 +79,20 @@
         .form-intro h3{font-size:1.8rem;margin-bottom:.5rem}
         .form-intro p{font-size:1.1rem;margin-bottom:0}
         .form-wrapper{max-width:700px;margin:0 auto 5rem;height:606px}
-        .schedule-table-wrapper{max-width:700px;margin:0 auto;overflow-x:auto;box-shadow:0 10px 30px rgba(0,0,0,.05);background:var(--white)}
+        .schedule-table-wrapper{max-width:700px;margin:0 auto 3rem;overflow-x:auto;box-shadow:0 10px 30px rgba(0,0,0,.05);background:var(--white)}
         .schedule-table{width:100%;border-collapse:collapse}
         .schedule-table th{background-color:var(--black);color:var(--white);padding:15px;text-align:left;font-weight:500;border-bottom:1px solid var(--black)}
         .schedule-table td{padding:15px;border-bottom:1px solid var(--medium-gray)}
         .schedule-table tr:last-child td{border-bottom:none}
+        .upcoming-notice {
+            background: var(--warning-yellow-bg);
+            border: 1px solid var(--warning-yellow-border);
+            color: var(--warning-yellow-text);
+            padding: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 600;
+        }
         .costing-info{max-width:700px;margin:2rem auto 0;padding:2rem;background:var(--white);border:1px solid var(--medium-gray);text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.05)}
         .costing-info h3{margin:0 0 1rem;font-size:1.5rem;color:var(--black)}
         .costing-info p{margin-bottom:.5rem;color:var(--dark-gray);font-size:1.1rem}
@@ -299,12 +309,17 @@
                 </iframe>
                 <script src="https://link.saleshero.uk/js/form_embed.js" defer></script>
             </div>
+
             <div class="section-title">
                 <h2 id="schedule-heading">Class Schedule</h2>
             </div>
-            <div class="schedule-table-wrapper" role="region" aria-label="Weekly schedule">
+
+            <div class="schedule-table-wrapper" role="region" aria-label="Current weekly schedule">
                 <table class="schedule-table">
                     <thead>
+                        <tr>
+                            <th scope="col" colspan="4" style="text-align:center; background:#444;">Current Schedule (Until May)</th>
+                        </tr>
                         <tr>
                             <th scope="col">Day</th>
                             <th scope="col">Class</th>
@@ -334,6 +349,46 @@
                     </tbody>
                 </table>
             </div>
+
+            <div class="upcoming-notice">
+                <i class="fas fa-calendar-check"></i> <strong>COMING SOON:</strong> Following our official opening in May, we are moving to a full 6-day timetable!
+            </div>
+
+            <div class="schedule-table-wrapper" role="region" aria-label="Official Opening Schedule">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th scope="col" colspan="3" style="text-align:center; background:var(--accent-purple);">Official Opening Timetable (May 2026)</th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Day</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Class & Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td rowspan="3"><strong>Monday</strong></td><td>17:00 - 17:45</td><td>Youngens 5-8 Years (GI)</td></tr>
+                        <tr><td>18:00 - 19:15</td><td>Women Only BJJ (GI Sport)</td></tr>
+                        <tr><td>19:30 - 20:45</td><td>Adult (GI)</td></tr>
+                        <tr><td rowspan="3"><strong>Tuesday</strong></td><td>06:30 - 07:30</td><td>Adult (NO GI)</td></tr>
+                        <tr><td>17:00 - 17:45</td><td>Juniors 9-15 Years (GI)</td></tr>
+                        <tr><td>18:00 - 19:15</td><td>Adult All Levels (GI)</td></tr>
+                        <tr><td rowspan="3"><strong>Wednesday</strong></td><td>17:00 - 17:45</td><td>Youngens 5-8 Years (GI)</td></tr>
+                        <tr><td>18:00 - 19:00</td><td>Adult Foundations (GI)</td></tr>
+                        <tr><td>19:15 - 20:30</td><td>Adult (NO GI)</td></tr>
+                        <tr><td rowspan="3"><strong>Thursday</strong></td><td>06:30 - 07:30</td><td>Adult (GI)</td></tr>
+                        <tr><td>12:00 - 13:00</td><td>Injury Prevention Class</td></tr>
+                        <tr><td>Evening</td><td>TBC</td></tr>
+                        <tr><td rowspan="3"><strong>Friday</strong></td><td>17:00 - 17:45</td><td>Juniors 9-15 Years (NO GI)</td></tr>
+                        <tr><td>18:00 - 19:00</td><td>Adult Foundations (NO GI)</td></tr>
+                        <tr><td>19:15 - 20:30</td><td>Adult (NO GI)</td></tr>
+                        <tr><td rowspan="3"><strong>Saturday</strong></td><td>08:45 - 09:45</td><td>Women Only BJJ (GI Street)</td></tr>
+                        <tr><td>10:00 - 11:00</td><td>Adult All Levels (GI)</td></tr>
+                        <tr><td>11:00 - 12:00</td><td>Open Mat (GI & NO GI)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
             <div class="costing-info">
                 <h3>Pricing</h3>
                 <p>Currently operating a simple pay as you train routine for just <strong>£8 per class.</strong></p>
@@ -344,6 +399,7 @@
             </div>
         </div>
     </section>
+
     <section id="reviews" aria-labelledby="reviews-heading">
         <div class="container">
             <div class="section-title">
