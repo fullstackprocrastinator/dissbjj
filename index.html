@@ -22,7 +22,7 @@
             --black:#000;--white:#fff;--light-gray:#f5f5f5;--medium-gray:#e0e0e0;--dark-gray:#333;
             --warning-yellow-bg:#fff3cd;--warning-yellow-border:#ffeeba;--warning-yellow-accent:#ffc107;--warning-yellow-text:#856404;
             --header-height:72px;
-            --accent-purple: #7a5ba0; /* Matching the timetable's purple accent */
+            --accent-purple: #7a5ba0;
         }
         *{margin:0;padding:0;box-sizing:border-box}
         html{scroll-behavior:smooth}
@@ -78,7 +78,7 @@
         .form-intro{max-width:700px;margin:0 auto 2rem;padding:2rem;background:var(--white);border:1px solid var(--medium-gray);box-shadow:0 10px 30px rgba(0,0,0,.05);text-align:center}
         .form-intro h3{font-size:1.8rem;margin-bottom:.5rem}
         .form-intro p{font-size:1.1rem;margin-bottom:0}
-        .form-wrapper{max-width:700px;margin:0 auto 5rem;height:606px}
+        .form-wrapper{max-width:700px;margin:0 auto 5rem;min-height:606px}
         .schedule-table-wrapper{max-width:700px;margin:0 auto 3rem;overflow-x:auto;box-shadow:0 10px 30px rgba(0,0,0,.05);background:var(--white)}
         .schedule-table{width:100%;border-collapse:collapse}
         .schedule-table th{background-color:var(--black);color:var(--white);padding:15px;text-align:left;font-weight:500;border-bottom:1px solid var(--black)}
@@ -290,7 +290,7 @@
             <div class="form-wrapper">
                 <iframe
                     src="https://link.saleshero.uk/widget/form/j3HFCtTUuJP3HEDCjIHw"
-                    style="width:100%;height:100%;border:none;border-radius:3px"
+                    style="width:100%;height:606px;border:none;border-radius:3px"
                     id="inline-j3HFCtTUuJP3HEDCjIHw" 
                     data-layout="{'id':'INLINE'}"
                     data-trigger-type="alwaysShow"
@@ -304,10 +304,9 @@
                     data-layout-iframe-id="inline-j3HFCtTUuJP3HEDCjIHw"
                     data-form-id="j3HFCtTUuJP3HEDCjIHw"
                     title="Website Contact Form"
-                    loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
-                <script src="https://link.saleshero.uk/js/form_embed.js" defer></script>
+                <script src="https://link.saleshero.uk/js/form_embed.js"></script>
             </div>
 
             <div class="section-title">
