@@ -285,7 +285,7 @@
         <div class="container">
             <div class="form-intro">
                 <h3>4 Week Launch Trial | Sports Therapy | Performance Coaching</h3>
-                <p>Enquire here</p>
+                <p>Enquire below</p>
             </div>
             <div class="form-wrapper">
                 <iframe
@@ -574,23 +574,20 @@
             modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
         }
 
-        // --- NEW SCROLLING LOGIC FOR "DEAD CENTER" FOCUS ---
-        // This selects all buttons linking to #schedule (Hero, Newcomers, and Modal link)
+        // --- UPDATED SCROLLING LOGIC TO CENTER ONLY THE FORM ---
         const scheduleButtons = document.querySelectorAll('a[href="#schedule"]');
         
         scheduleButtons.forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                // If it's the modal link, close the modal first
                 if (this.classList.contains('modal-link')) {
                     closeModal();
                 }
 
-                // Find the schedule section
-                const target = document.querySelector('#schedule');
+                // CHANGED: Target the .form-wrapper instead of #schedule section
+                const target = document.querySelector('.form-wrapper');
                 if (target) {
-                    // block: 'center' puts the target in the middle of the viewport
                     target.scrollIntoView({ 
                         behavior: 'smooth', 
                         block: 'center' 
@@ -607,4 +604,3 @@
     </script>
 </body>
 </html>
-
