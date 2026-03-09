@@ -534,6 +534,7 @@
         };
         window.addEventListener('scroll', onScroll);
         onScroll();
+
         // Reveal sections on view (reduced motion safe)
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (!reduceMotion) {
@@ -553,34 +554,51 @@
                 observer.observe(section);
             });
         }
-        // Incentive Modal
+
+        // Incentive Modal Logic
         const modal = document.getElementById('incentive-modal');
         const closeBtn = document.querySelector('.modal-close-btn');
-        const modalLink = document.querySelector('.modal-link');
         const showModal = () => modal.classList.add('show');
         const closeModal = () => {
             modal.classList.remove('show');
             sessionStorage.setItem('dissBjjFreeTasterClosed', 'true');
         };
         const shouldShow = () => !sessionStorage.getItem('dissBjjFreeTasterClosed');
+        
         if (modal && shouldShow()) {
             setTimeout(showModal, 1500);
         }
+        
         if (modal) {
             closeBtn.addEventListener('click', closeModal);
             modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-            modalLink.addEventListener('click', function (e) {
+        }
+
+        // --- NEW SCROLLING LOGIC FOR "DEAD CENTER" FOCUS ---
+        // This selects all buttons linking to #schedule (Hero, Newcomers, and Modal link)
+        const scheduleButtons = document.querySelectorAll('a[href="#schedule"]');
+        
+        scheduleButtons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
                 e.preventDefault();
-                const href = this.getAttribute('href');
-                closeModal();
-                const target = document.querySelector(href);
+                
+                // If it's the modal link, close the modal first
+                if (this.classList.contains('modal-link')) {
+                    closeModal();
+                }
+
+                // Find the schedule section
+                const target = document.querySelector('#schedule');
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                } else {
-                    location.hash = href;
+                    // block: 'center' puts the target in the middle of the viewport
+                    target.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'center' 
+                    });
                 }
             });
-        }
+        });
+
         // Ensure external links with target="_blank" are safe
         document.querySelectorAll('a[target="_blank"]').forEach(a => {
             if (!a.rel.includes('noopener')) a.rel += (a.rel ? ' ' : '') + 'noopener';
@@ -589,5 +607,3 @@
     </script>
 </body>
 </html>
-
-
